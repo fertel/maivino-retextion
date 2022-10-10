@@ -1,0 +1,36 @@
+<style>
+
+  .smart-cart--enabled #site-cart {
+    display: none !important;
+  }
+  html.kill-overflow {
+      overflow: scroll !important;
+
+    }
+
+  body.smart-cart--enabled {
+    overflow: scroll !important;
+  }
+  body.smart-cart--enabled.sidebar-move {
+    right: auto;
+  }
+  
+
+</style>
+
+<script>
+    document.addEventListener('rebuy:smartcart.ready', function(event){
+      Rebuy.libraries.$('#site-overlay').remove()
+  });
+
+
+  document.addEventListener('rebuy:smartcart.ready', function(event){
+    Rebuy.libraries.$('.cart-icon').click(function(){
+    Rebuy.SmartCart.show();
+    });
+
+  });
+
+</script>
+
+

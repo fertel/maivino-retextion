@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "split"
+      }
+    },
+    "1659044646d4062d31": {
+      "type": "faq",
+      "blocks": {
+        "1659044646af6ff6e4-1": {
+          "type": "text",
+          "settings": {
+            "title": "Where do you ship?",
+            "body": "<p><strong>17 states and counting :)<\/strong><\/p><p>California, Colorado, Florida, Georgia, llinois, Massachusetts, Maryland, Michigan, Minnesota, New York <span style=\"text-decoration:underline\"><em>(<\/em><\/span><a href=\"https:\/\/docs.google.com\/spreadsheets\/d\/1nptkS__TCP8OnVipomVHGDDYUBL3OIJ8USAWpIe79m8\/edit?usp=sharing\" target=\"_blank\" title=\"Maivino Same-Day Delivery\"><span style=\"text-decoration:underline\"><em>same-day delivery in NYC<\/em><\/span><\/a><span style=\"text-decoration:underline\"><em>)<\/em><\/span><span style=\"text-decoration:underline\">, <\/span>New Jersey, North Carolina, Oregon Pennsylvania, Texas, Virginia, Washington DC<\/p><p>We are always adding states, if you want get yours on the list please email us at hi@maivino.com<\/p>"
+          }
+        },
+        "1659044646af6ff6e4-0": {
+          "type": "text",
+          "settings": {
+            "title": "How fast will my order ship?",
+            "body": "<p><strong>SAME-DAY LOCAL COURIER <\/strong><\/p><p><em><strong>MANHATTAN & QUEENS, BROOKLYN <\/strong><\/em><a href=\"https:\/\/docs.google.com\/spreadsheets\/d\/1nptkS__TCP8OnVipomVHGDDYUBL3OIJ8USAWpIe79m8\/edit?usp=sharing\" target=\"_blank\" title=\"https:\/\/docs.google.com\/spreadsheets\/d\/1nptkS__TCP8OnVipomVHGDDYUBL3OIJ8USAWpIe79m8\/edit?usp=sharing\"><strong>(limited to certain parts) - click to see check your zip code is in zone<\/strong><\/a><\/p><p>Monday-Friday (that means no deliveries on Saturday 😭), any order made before 1:30 pm will be delivered the same-day between 5-10pm.  Any request after 1:30 pm will be delivered the next day. At checkout, you'll be able to reserve the day you want it delivered. <\/p><p><strong>FEDEX<\/strong><\/p><p><em><strong>NY, MA, D.C, VA, MD, FL, MN, NC, CA<\/strong><\/em><\/p><p>All shipments are made via FedEx Ground - any order made will before 2pm will be shipped same day, any order after 2pm will be shipped the day after. It will approximately take 1-4 days to ship via FedEx Ground. <\/p><p>If you're want to know delivery times, after purchase, you can contact FedEx  to get a better idea of the time frame. They usually will pass through your neighborhood the same time everyday. 1-800-463-3339.<\/p>"
+          }
+        },
+        "1659044646af6ff6e4-2": {
+          "type": "text",
+          "settings": {
+            "title": "Is an adult signature is required?",
+            "body": "<p>Any adult 21+ can sign for your package. We highly recommend shipping to a work address or address where someone will be able to sign for it (i.e. a doorman). If you're getting a FedEx Delivery - you can always contact them the day of delivery to get a better idea of the time frame. 1-800-463-3339.<\/p>"
+          }
+        },
+        "86567381-0d87-4fe4-b9c1-a2a84c7b6887": {
+          "type": "text",
+          "settings": {
+            "title": "Help! I need to change, edit, or cancel my order!",
+            "body": "<p>Hurry! There’s only a short window of time for us to edit or cancel your order. E-mail hi@maivino.com and we'll make it work!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1659044646af6ff6e4-1",
+        "1659044646af6ff6e4-0",
+        "1659044646af6ff6e4-2",
+        "86567381-0d87-4fe4-b9c1-a2a84c7b6887"
+      ],
+      "settings": {
+        "title": "Shipping",
+        "open_first": false,
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "16590452530b9749f5": {
+      "type": "faq",
+      "blocks": {
+        "16590452536164bcec-0": {
+          "type": "text",
+          "settings": {
+            "title": "What makes wine organic?",
+            "body": "<p>It means we don't use herbicides or pesticides in farming. We trim weeds by releasing llamas and sheep into the vineyard. Instead of buying compost, we make our own by fermenting waste produced at the farm. Not only is organic farming better for the land, but it also reduces wine's carbon emissions.<\/p>"
+          }
+        },
+        "16590452536164bcec-1": {
+          "type": "text",
+          "settings": {
+            "title": "What does it mean to ferment with indigenous yeast?",
+            "body": "<p>Fermentation is the process in which a bigger substance is broken down into a smaller substance. For example, in wine, yeast breaks down the sugar found in grapes which converts it into alcohol. Our latest wines use indigenous yeast, which means the yeast is native to the vineyard and more acquainted with the grapes. Using indigenous yeast prolongs the fermentation process resulting in more complex flavors. <\/p>"
+          }
+        },
+        "16590452536164bcec-2": {
+          "type": "text",
+          "settings": {
+            "title": "Why does the airtight spout keep wine fresher?",
+            "body": "<p>Once a bottle is uncorked a bottle of wine, oxygen gets in and begins to oxidize the wine, making it undrinkable in a matter of days. Our airtight spout prevents oxygen from getting into the packaging, meaning you have 30 days to sip your wine after opening - if you need it ;).<\/p>"
+          }
+        },
+        "4491a4cf-5baa-45df-9ae8-48727e3c6e5b": {
+          "type": "text",
+          "settings": {
+            "title": "How does your bag reduce wine's carbon footprint?",
+            "body": "<p>Today, only 30% of glass bottles are recycled. Glass is one of the most significant contributors to wine's carbon footprint. Switching to pouches reduces wine's carbon footprint by 80%, which is better for the climate and lowers waste production. Read what others say. <\/p>"
+          }
+        },
+        "4abafab9-b0fd-4533-aaad-a119dca3a7e9": {
+          "type": "text",
+          "settings": {
+            "title": "What makes wine vegan?",
+            "body": "<p>During the fining process (when sediments are removed), traditionally the following products are used - casein (a milk protein), albumin (egg whites), gelatin (animal protein) and isinglass (fish bladder protein). <\/p><p>Our wines are filtered with clay. 🙌<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16590452536164bcec-0",
+        "16590452536164bcec-1",
+        "16590452536164bcec-2",
+        "4491a4cf-5baa-45df-9ae8-48727e3c6e5b",
+        "4abafab9-b0fd-4533-aaad-a119dca3a7e9"
+      ],
+      "settings": {
+        "title": "Product",
+        "open_first": false,
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "165904980123103af4": {
+      "type": "faq",
+      "blocks": {
+        "16590498014ae5359d-1": {
+          "type": "text",
+          "settings": {
+            "title": "Help! I need somebody!",
+            "body": "<p>We got you! Email hi@maivino.com OR we can be reached at the chat bot you see on the bottom left hand side of this screen. <\/p><p>We don't have a huge team running the business - just Pam and Mai - so please be patient if it takes use some time to get back to you! <\/p><p><\/p>"
+          }
+        },
+        "16590498014ae5359d-0": {
+          "type": "text",
+          "settings": {
+            "title": "Wholesale inquires",
+            "body": "<p>Email hi@maivino.com <\/p>"
+          }
+        },
+        "f98375b1-7a88-438f-8b25-b6b33163e1bf": {
+          "type": "text",
+          "settings": {
+            "title": "Do you have a rewards program?",
+            "body": "<p>Yes! We do to <a href=\"https:\/\/maivino.com\/#smile-home\" title=\"https:\/\/maivino.com\/#smile-home\">check it out<\/a> :) - a tab will appear on the bottom left. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16590498014ae5359d-1",
+        "16590498014ae5359d-0",
+        "f98375b1-7a88-438f-8b25-b6b33163e1bf"
+      ],
+      "settings": {
+        "title": "General",
+        "open_first": false,
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1659044646d4062d31",
+    "16590452530b9749f5",
+    "165904980123103af4"
+  ]
+}

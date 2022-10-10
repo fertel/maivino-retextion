@@ -1,0 +1,74 @@
+{%- liquid 
+  if show_country_selector and localization.available_countries.size > 1
+    assign country_selector = true
+  endif
+
+  if show_locale_selector and localization.available_languages.size > 1
+    assign locale_selector = true
+  endif
+-%}
+
+{%- if country_selector or locale_selector -%}
+
+  <div class="localization-form-holder">
+    
+    {%- assign formId = 'localization_form-' | append: location -%}
+    {%- form 'localization', id: formId, class: 'localization-form' -%}
+
+      {%- if locale_selector -%}
+        <localization-form class="localization-form__item">
+
+          <span class="text-size--smaller" id="lang-heading-{{ location }}">{{ 'general.accessibility_labels.language_dropdown_label' | t }}</span>
+
+          <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}" />
+
+          <button class="regular-select-cover" aria-expanded="false" aria-controls="lang-list-{{ location }}" data-location="{{ location }}">
+            <span class="regular-select-inner">
+              {{ localization.language.endonym_name | capitalize }}
+            </span>
+          </button>
+
+          <ul id="lang-list-{{ location }}" class="regular-select-content invert-permanent">
+            {%- for language in localization.available_languages -%}
+              <li class="regular-select-item {% if language.iso_code == localization.language.iso_code %}regular-select-item--selected{% endif %}">
+                <button type="submit" name="locale_code" lang="{{ language.iso_code }}" value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}>{{ language.endonym_name | capitalize }}</button>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+        </localization-form>
+      {%- endif -%} 
+
+      {%- if country_selector -%}
+        <localization-form class="localization-form__item">
+
+          <span class="text-size--smaller" id="currency-heading-{{ location }}">{{ 'general.accessibility_labels.country_dropdown_label' | t }}</span>
+
+          <input type="hidden" name="country_code" id="CurrencySelector-{{ location }}" value="{{ localization.country.iso_code }}" />
+
+          <button class="regular-select-cover" aria-expanded="false" aria-controls="country-list-{{ location }}" data-location="{{ location }}">
+            <span class="regular-select-inner">
+              <span class="localization-form__country">{{ localization.country.name }}</span>
+              <span class="localization-form__currency">({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})</span>
+            </span>
+          </button>
+
+          <ul id="country-list-{{ location }}" class="regular-select-content invert-permanent">
+            {% for country in localization.available_countries %}
+              <li class="regular-select-item {% if country.iso_code == localization.country.iso_code %}regular-select-item--selected{% endif %}">
+                <button type="submit" name="country_code" value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}aria-current="true"{% endif %}>
+                  <span class="localization-form__country">{{ country.name }}</span> 
+                  <span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+                </button>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+        </localization-form>
+      {%- endif -%}
+
+    {%- endform -%}
+
+  </div>
+
+{%- endif -%}

@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "disabled": true,
+      "settings": {
+        "show_collection_banner": true,
+        "collection_desktop_layout": "split",
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "mobile_overlay_background": "rgba(0,0,0,0)",
+        "mobile_overlay_text": "rgba(0,0,0,0)",
+        "collection_rows": 3,
+        "enable_filtering": true,
+        "enable_sorting": true
+      }
+    },
+    "navigation": {
+      "type": "main-collection-navigation",
+      "disabled": true,
+      "settings": {
+        "navigation_style": "2",
+        "navigation_images": false,
+        "custom_text": "rgba(0,0,0,0)",
+        "custom_overlay": "rgba(0,0,0,0)"
+      }
+    },
+    "16581153844955c534": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "2022 Wines",
+        "subtitle": "Shop now",
+        "collection": "organic-wine",
+        "collection_rows": 5,
+        "show_view_all": true
+      }
+    },
+    "16588843677e8731be": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Wine Sale",
+        "subtitle": "Shop now",
+        "collection": "2021-batch",
+        "collection_rows": 5,
+        "show_view_all": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "navigation",
+    "16581153844955c534",
+    "16588843677e8731be"
+  ]
+}

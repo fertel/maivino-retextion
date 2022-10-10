@@ -1,0 +1,159 @@
+{% assign sub_bundle_min = nil %}
+{% assign sub_bundle_max = nil %}
+{% assign sub_bundle_quantities = product.metafields.rtxn.bundle_quantities | split: '|' %}
+{% if sub_bundle_quantities.size > 0 %}
+    {% assign sub_bundle_min = sub_bundle_quantities[0] %}
+    {% assign sub_bundle_max = sub_bundle_quantities[1] %}
+{% endif %}
+
+{% assign sub_bundle_products_count = 0 %}
+{% assign sub_bundle_products = product.metafields.rtxn.bundle_products | split: '|' %}
+{% for productSub in collections.all.products %}
+    {% assign productSubID = productSub.id | strip %}
+    {% if sub_bundle_products contains productSubID %}
+        {% assign sub_bundle_products_count = sub_bundle_products_count | plus: 1 %}
+    {% endif %}
+{% endfor %}
+
+{% assign otp_bundle_min = nil %}
+{% assign otp_bundle_max = nil %}
+{% if product.metafields.bundle.min != blank and product.metafields.bundle.max != blank %}
+    {% assign otp_bundle_min = product.metafields.bundle.min %}
+    {% assign otp_bundle_max = product.metafields.bundle.max %}
+{% else %}
+    {% assign otp_bundle_min = sub_bundle_min %}
+    {% assign otp_bundle_max = sub_bundle_max %}
+{% endif %}
+
+<div class="lsg-bundle-block{% if bundleFirst %} lsg-bundle-block-active{% endif %}" data-bundle-product="{{ product.id }}" data-bundle-index="{{ bundleIndex }}" data-otp-bundle-min="{{ otp_bundle_min }}" data-otp-bundle-max="{{ otp_bundle_max }}" data-sub-bundle-min="{{ sub_bundle_min }}" data-sub-bundle-max="{{ sub_bundle_max }}">
+    <div class="lsg-bundle-buybox-block">
+        {% if bundleIndex > 0 %}
+            <div class="lsg-bundle-size-select">
+                {% for bundle in bundles %}
+                    {% assign bundleOption = bundle | split: '|:|' %}
+                    {% assign bundleButtonIndex = bundleOption[1] | plus: 0 %}
+                    <button type="button" class="lsg-bundle-size-select-el{% if bundleButtonIndex == bundleIndex %} lsg-bundle-size-select-el--selected{% endif %}" data-bundle-index="{{ bundleButtonIndex }}">{{ bundleOption[0] }}</button>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="lsg-bundle-product-list">
+            {% liquid
+                for tag in product.tags
+                    if tag contains 'size='
+                        assign split_tag = tag | split: "="
+                        assign split_handle = tag | split: '=' | last
+                        assign split_value = split_tag[1]
+                        if split_handle == product.handle
+                            assign combo_size = split_value | split: '-' | first
+                            break
+                        endif
+                    endif
+                endfor
+                if combo_size == 'small'
+                    assign fresh_weight = '3lb'
+                    assign dry_weight = '2lb'
+                elsif combo_size == 'large'
+                    assign fresh_weight = '7lb'
+                    assign dry_weight = '4lb'
+                endif
+            %}
+            
+            {% if sub_bundle_products_count > 0 %}
+                <div data-bundle-min="{{ sub_bundle_min }}" data-bundle-max="{{ sub_bundle_max }}" class="lsg-bundle-product-set-list lsg-bundle-product-sub-list" data-lsg-bundle-product-sub-list>
+                
+                    {%- comment -%}Render Fresh Products{%- endcomment -%}
+                    <div class="lsg-bundle-product-list-title">FRESH FOOD ({{ fresh_weight }})</div>
+                    <div class="lsg-bundle-product-list-subtitle">Two Fresh /  Frozen bags minimum</div>
+                    <div class="lsg-bundle-product-type-list">
+                        {% for productSub in collections.all.products %}
+                            {% assign productSubID = productSub.id | strip %}
+                            {% if sub_bundle_products contains productSubID %}
+    
+                                {% liquid
+                                    for tag in productSub.tags
+                                        if tag contains 'type='
+                                            assign productType = tag | split: '=' | last
+                                            break
+                                        endif
+                                    endfor
+                                %}
+                                {% if productType == 'fresh' %}
+                                    {% render 'lsg-bundle-product-select', product: productSub, min: sub_bundle_min, productType: productType %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                
+                    {%- comment -%}Render Dry Products{%- endcomment -%}
+                    <div class="lsg-bundle-product-list-title">DRY FOOD ({{ dry_weight }})</div>
+                    <div class="lsg-bundle-product-type-list">
+                        {% for productSub in collections.all.products %}
+                            {% assign productSubID = productSub.id | strip %}
+                            {% if sub_bundle_products contains productSubID %}
+    
+                                {% liquid
+                                    for tag in productSub.tags
+                                        if tag contains 'type='
+                                            assign productType = tag | split: '=' | last
+                                            break
+                                        endif
+                                    endfor
+                                %}
+                                {% if productType == 'dry' %}
+                                    {% render 'lsg-bundle-product-select', product: productSub, min: sub_bundle_min, productType: productType %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% elsif product.metafields.bundle.products %}
+                <div data-bundle-min="{{ otp_bundle_min }}" data-bundle-max="{{ otp_bundle_max }}" class="lsg-bundle-product-set-list lsg-bundle-product-otp-list" data-lsg-bundle-product-sub-list>
+                    {% for listProduct in product.metafields.bundle.products.value %}
+                        {% render 'lsg-bundle-product-select', product: listProduct, min: otp_bundle_min %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% if sub_bundle_products_count > 0 %}
+            <div class="lsg-bundle-interval-select" data-lsg-bundle-interval-select>
+                <p class="pdp__select-plan-title">{{ settings.frequency_heading }}</p>
+                <div class="lsg-bundle-interval-select-inner">
+                    <input type="radio" name="bundle_interval_select_{{ bundleIndex }}" id="bundleIntervalSelectOTP_{{ bundleIndex }}" value="otp" class="lsg-hidden">
+                    <label for="bundleIntervalSelectOTP_{{ bundleIndex }}" class="lsg-bundle-interval-el lsg-bundle-interval-otp-el">
+                        <div class="lsg-bundle-interval-name">{{ settings.frequency_otp }}</div>
+                        <div class="lsg-bundle-interval-price lsg-bundle-interval-otp-price">$0.00</div>
+                    </label>
+                    <input type="radio" name="bundle_interval_select_{{ bundleIndex }}" id="bundleIntervalSelectSub_{{ bundleIndex }}" value="sub" class="lsg-hidden" checked>
+                    <label for="bundleIntervalSelectSub_{{ bundleIndex }}" class="lsg-bundle-interval-el lsg-bundle-interval-sub-el">
+                        <div class="lsg-bundle-interval-name">{{ settings.frequency_sub }}</div>
+                        <div class="lsg-bundle-interval-price lsg-bundle-interval-sub-price">$0.00</div>
+                    </label>
+                    <div class="lsg-bundle-interval-frequency-select-wrap">
+                        {% render 'lsg-bundle-frequency-select', product: product %}
+                    </div>
+                </div>
+            </div>
+        {% elsif product.metafields.bundle.products %}
+            <div class="lsg-bundle-interval-only-otp">
+                <div>{{ settings.otp_interval_prefix }}</div>
+                <div class="lsg-bundle-interval-price lsg-bundle-interval-otp-price">$0.00</div>
+            </div>
+        {% endif %}
+        <div class="lsg-bundle-atc-wrapper">
+            <form action="/cart/add" method="post" enctype="multiplart/form-data" class="lsg-bundle-form">
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="selling_plan" value="{{ current_selling_plan_allocation.selling_plan.id | default: '' }}">
+                <div class="lsg-bundle-atc-wrapper">
+                    <button type="submit" class="btn lsg-bundle-submit-button" data-lsg-bundle-atc>
+                        <span class="lsg-bundle-submit-button-atc-text" data-lsg-bundle-submit-button-atc-text>{{ settings.atc_text }}</span>
+                        <span class="lsg-bundle-submit-button-add-more-text hidden" data-lsg-bundle-submit-button-add-more-text>
+                            Add 
+                            <span class="lsg-bundle-submit-button-add-more-quantity" data-lsg-bundle-submit-button-add-more-quantity></span> 
+                            More 
+                            <span class="lsg-bundle-submit-button-add-more-type" data-lsg-bundle-submit-button-add-more-type>Fresh</span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

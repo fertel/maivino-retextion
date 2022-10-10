@@ -1,0 +1,537 @@
+<script src="{{ 'rtxn-bundle.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<!-- Set bundle product and variant IDs -->
+<script type="text/javascript">
+  var BundleProductID = {{ product.id }};
+  var BundleProductVariantID = {{ product.variants[0].id }};
+</script>
+
+{%- liquid 
+comment
+  Set default bundle min and max
+endcomment
+assign bundle_min = 0
+assign bundle_max = 3
+
+comment
+  Definte bundle params
+endcomment
+assign bundle_products = product.metafields.rtxn.bundle_products | split: '|'
+assign bundle_quantities = product.metafields.rtxn.bundle_quantities | split: '|'
+
+comment
+  Update bundle min and max
+endcomment
+assign bundle_min = bundle_quantities[0]
+assign bundle_max = bundle_quantities[1]
+
+comment
+  Subscription buy box variables
+endcomment
+assign current_variant = product.selected_or_first_available_variant | default: product.variants.first
+assign current_selling_plan_allocation = current_variant.selected_selling_plan_allocation
+
+if current_selling_plan_allocation == nil and current_variant.requires_selling_plan
+  assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+endif
+
+assign offer = current_selling_plan_allocation | default: current_variant
+
+assign filtered_selling_plan_groups = product.selling_plan_groups | where: "app_id", "5875267"
+assign hiddenGroups = filtered_selling_plan_groups | map: "name" | where: "[hidden]"
+assign visibleGroupsSize = filtered_selling_plan_groups.size | minus: hiddenGroups.size
+
+assign first_selling_plan_allocation = current_variant.selling_plan_allocations[0]
+
+comment
+  SEO media
+endcomment
+if product.selected_or_first_available_variant.featured_media
+  assign seo_media = product.selected_or_first_available_variant.featured_media
+else
+  assign seo_media = product.featured_media
+endif
+-%}
+
+<style>
+  .page-wrap { 
+    width: 100%; 
+    padding: 0 18px;
+    display: flex;
+    justify-content: center;
+  }
+  .product__title,
+  .product__description { width: 100%; }
+  #rtxn-bundle {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: row;
+  }
+  #rtxn-bundle-grid,
+  #rtxn-bundle-sidebar { 
+    padding: 12px;
+  }
+  #rtxn-bundle-sidebar { flex-grow: 1;}
+  .rtxn-bundle-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rtxn-bundle-item img { width: 130px; }
+  .text-box { 
+    padding: 0 25px;
+    flex-grow: 1;
+  }
+  .rtx_buy_box { 
+    margin: 1.5rem auto
+  }
+  .rtx_container {
+    display: flex;
+    flex-direction: column;
+  }
+  .rtx_option_selector_one,
+  .rtx_option_selector_sub { display: flex; }
+  .rtx_option_heading {
+    padding-left: 0.5rem; 
+    flex-grow: 1; 
+  }
+  .rtx_option_plans { margin: 1rem auto; }
+</style>
+
+<section class="page-wrap">
+  <!-- Retextion bundle wrapper -->
+  <div id="rtxn-bundle" class="product grid bundle grid--1-col" data-bundle-min="{{ bundle_min }}" data-bundle-max="{{ bundle_max }}">
+    <h1 class="product__title"> {{- product.title | escape -}} </h1> 
+    <p class="product__description"> {{- product.description -}}</p>
+    <div id="rtxn-bundle-grid" class="bundle-grid" data-bundle-min="{{ bundle_min }}" data-bundle-max="{{ bundle_max }}">
+      
+      {% for productSub in collections.all.products %}
+        {%- liquid
+          comment
+            Set up product specific variables
+          endcomment
+          assign productSubID = productSub.id | strip
+          assign bundle_products = product.metafields.rtxn.bundle_products | split: '|'
+          assign sub_price = productSub.variants[0].selling_plan_allocations[0].price
+          assign onetime_price = productSub.variants[0].price
+          if productSub.variants.size > 1
+            assign has_variants = true
+          else 
+            assign has_variants = false
+          endif
+        -%}
+        {%- if bundle_products contains productSubID -%}
+          <!-- handle variants vs single item products -->
+          {% if has_variants %}
+            {% for variant in productSub.variants%}
+              <div class="rtxn-bundle-item" data-type="product" data-product-id="{{ productSub.id }}" data-inventory-quantity="{{ variant.inventory_quantity }}" data-selling-plan-id="{{ productSub.selling_plan_groups[0].selling_plans[0].id }}" data-variant-id="{{ variant.id }}" data-subscription-price="{{ sub_price }}" data-onetime-price="{{ onetime_price }}">
+                <div>
+                  <img src="{{ variant.image.src | img_url: '200x200' }}" alt="{{ variant.title }}" class="bundle_img">
+                </div>
+                <div class="text-box">
+                  <h2>{{ productSub.title }}</h2>
+                  <h3>{{ variant.title }}</h3>                  
+                </div>
+                <div class="bundle-item-selector">
+                  <span class="minus">
+                    <button class="btn">-</button>
+                  </span>
+                  <span class="bundle_quantity">0</span>
+                  <span class="plus">
+                    <button class="btn">+</button>
+                  </span>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="rtxn-bundle-item" data-type="product" data-inventory-quantity="{{ productSub.variants[0].inventory_quantity }}" data-product-id="{{ productSub.id }}" data-selling-plan-id="{{ productSub.selling_plan_groups[0].selling_plans[0].id }}" data-variant-id="{{ productSub.variants[0].id }}" data-subscription-price="{{ sub_price }}" data-onetime-price="{{ onetime_price }}" data-qty="0">
+              <div>
+                <img src="{{ productSub.variants[0].image.src | img_url: '200x200' }}" alt="{{ productSub.title }}" class="bundle_img">
+              </div>
+              <div class="text-box">
+                <h2>{{ productSub.title }}</h2>
+              </div>
+              <div class="bundle-item-selector">
+                <span class="minus">
+                  <button class="btn" disabled>-</button>
+                </span>
+                <span class="bundle_quantity">0</span>
+                <span class="plus">
+                  <button class="btn">+</button>
+                </span>
+              </div>
+            </div>
+          {% endif %}
+          
+        {% endif %}
+      {% endfor %}   
+    </div>
+    <aside id="rtxn-bundle-sidebar">
+      <p id="rtxn-item-count">
+        Item
+        <span id="rtxn-item-count-from">0</span>
+        of
+        <span id="rtxn-item-count-to">0</span>
+      </p>
+      {% assign current_selling_plan_allocation = product.selected_or_first_available_variant.selling_plan_allocations | first %}
+      {% for selling_plan in product.selling_plan_groups %}
+        {% if selling_plan.app_id == '5875267' %}
+          {% assign rtx_selling_plan = selling_plan %}
+        {% endif %}
+      {% endfor %}
+      
+      {%- form 'product', product, data-productid: product.id, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+  
+        <input type="hidden" id="rtxn-parent-variant" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" id="rtxn-parent-sellingplan" name="selling_plan" value="{{ current_selling_plan_allocation.selling_plan.id | default: '' }}">
+        <div class="rtx_buy_box" id="rtx_buy_box_{{ product.id }}">
+          <div class="rtx_container" >
+              {% unless product.requires_selling_plan %}
+                  <div class="rtx_option_{{ product.id }} rtx_option_one_time" id="rtx_option_one_time">
+                      <div class="rtx_option_selector_one">
+                          <label for="radio_one_{{ product.id }}" class="rtx_option_label">
+                          <input type="radio" id='radio_one_{{ product.id }}' class="radio_rtx" value="onetime" name="selling_plan_select" data-product_id="{{ product.id }}" checked >
+                          <div class="rtx_option_heading">
+                              <div class='one_time_title'>
+                                  One-Time Purchase 
+                              </div>
+                          </div>
+                          </label>
+                          <span id="one_time_price"> {{product.variants[0].price | money}}</span>
+                      </div>
+                  </div>
+              {% endunless %}
+              <div id='rtx_sands_block'>
+                  <div class="rtx_option_{{ product.id }} rtx_option_sub" id="rtx_option_sub" >
+                      <div class="rtx_option_selector_sub">
+                          <label for="radio_sub" class="rtx_option_label">
+
+                          <input type="radio" id='radio_sub' class="radio_rtx" value="subsave" name="selling_plan_select" data-product_id="{{ product.id }}"  >
+                          <div class="rtx_option_heading">
+                              <div class='sub_title'>
+                                  {{ rtx_selling_plan.name }} 
+                              </div>
+                          </div>
+                          </label>
+                          <span id='sub_price'> {{ first_selling_plan_allocation.price | money }}</span>
+                      </div>
+                      <div class="rtx_option_plans" >
+                          {% comment %} <div class='bottom_arrow'>
+                          {% render 'icon', icon: 'arrow-bottom' %}
+                          </div> {% endcomment %}
+                          <select name="rtx_option_plans_dropdown" id="rtx_option_plans_dropdown" data-product_id="{{ product.id }}">
+                              {% for selling_plan in rtx_selling_plan.selling_plans %}
+                                  <option class='rtx_option_name' value="{{ selling_plan.id }}">{{ selling_plan.name }}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="product-form__buttons bundle-add-to-cart">
+          <button id="rtxn-bundle-add-to-cart" type="submit" name="add" class="product-form__submit button button--full-width {% if
+            block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}" disabled>
+            {%- if product.selected_or_first_available_variant.available -%}
+                {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        </div>
+
+      {%- endform -%}  
+  </aside>
+  </div>
+</section>
+{% schema %}
+	{
+    "name": "t:sections.split-extra-words.sections.main-product.name",
+    "class": "mount-product-page mount-css-slider main-product",
+    "tag": "section",
+    "blocks": [
+      {
+        "type": "@app"
+      },
+      {
+        "type": "header",
+        "name": "t:sections.split-extra-words.sections.main-product.settings.header.label",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_vendor",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.header.show_vendor",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_badge",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.header.show_badge",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_reviews",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.header.show_reviews",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_tax_info",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.header.show_tax_info",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "show_sku",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.header.show_sku",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "show_barcode",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.header.show_barcode",
+            "default": false
+          },
+          {
+            "type": "header",
+            "content": "t:sections.split-extra-words.product-header-extra.name"
+          },
+          {
+            "type": "checkbox",
+            "id": "stick_product_header_on_mobile",
+            "label": "t:sections.split-extra-words.product-header-extra.label",
+            "info": "t:sections.split-extra-words.product-header-extra.info",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "t:sections.main-product.blocks.text.name",
+        "settings": [
+          {
+            "id": "text",
+            "type": "richtext",
+            "default": "<p>Text block</p>",
+            "label": "t:sections.main-product.blocks.text.settings.text.label"
+          },
+          {
+            "type": "select",
+            "id": "text_style",
+            "label": "t:sections.main-product.blocks.text.settings.text_style.label",
+            "options": [
+              {
+                "value": "body",
+                "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
+              },
+              {
+                "value": "smaller",
+                "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
+              }
+            ],
+            "default": "body"
+          }
+        ]
+      },
+      {
+        "type": "variant_picker",
+        "name": "t:sections.main-product.blocks.variant_picker.name",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "select",
+            "id": "variants_style",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.variants.label",
+            "options": [
+              {
+                "value": "radio",
+                "label": "t:sections.split-extra-words.sections.main-product.settings.variants.options__1"
+              },
+              {
+                "value": "select",
+                "label": "t:sections.split-extra-words.sections.main-product.settings.variants.options__2"
+              }
+            ],
+            "default": "radio"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_color_swatches",
+            "label": "t:sections.split-extra-words.sections.main-product.settings.color_swatches.label",
+            "info": "t:sections.split-extra-words.sections.main-product.settings.color_swatches.info",
+            "default": true
+          },
+          {
+            "type": "select",
+            "id": "show_quantities",
+            "label": "t:sections.main-product.blocks.variant_picker.settings.low_inventory_notification.label",
+            "info": "t:sections.main-product.blocks.variant_picker.settings.low_inventory_notification.info",
+            "options": [
+              {
+                "value": "no",
+                "label": "t:sections.main-product.blocks.variant_picker.settings.low_inventory_notification.options__1.label"
+              },
+              {
+                "value": "below",
+                "label": "t:sections.main-product.blocks.variant_picker.settings.low_inventory_notification.options__2.label"
+              },
+              {
+                "value": "always",
+                "label": "t:sections.main-product.blocks.variant_picker.settings.low_inventory_notification.options__3.label"
+              }
+            ],
+            "default": "no"
+          }
+        ]
+      },
+      {
+        "type": "buy_buttons",
+        "name": "t:sections.main-product.blocks.buy_buttons.name",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_dynamic_checkout",
+            "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+            "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_quantity_selector",
+            "label": "t:sections.main-product.blocks.buy_buttons.settings.show_quantity_selector.label",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "description",
+        "name": "t:sections.main-product.blocks.description.name",
+        "limit": 1
+      },
+      {
+        "type": "share",
+        "name": "t:sections.main-product.blocks.share.name",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "t:sections.main-product.blocks.share.settings.featured_image_info.content"
+          },
+          {
+            "type": "paragraph",
+            "content": "t:sections.main-product.blocks.share.settings.title_info.content"
+          }
+        ]
+      },
+      {
+        "type": "custom_liquid",
+        "name": "t:sections.custom-liquid.name",
+        "settings": [
+          {
+            "type": "liquid",
+            "id": "custom_liquid",
+            "label": "t:sections.custom-liquid.settings.custom_liquid.label"
+          }
+        ]
+      },
+      {
+        "type": "collapsible_tab",
+        "name": "t:sections.main-product.blocks.collapsible_tab.name",
+        "settings": [
+          {
+            "id": "heading",
+            "type": "text",
+            "info": "t:sections.main-product.blocks.collapsible_tab.settings.heading.info",
+            "label": "t:sections.main-product.blocks.collapsible_tab.settings.heading.label",
+            "default": "Collapsible tab"
+          },
+          {
+            "id": "content",
+            "type": "richtext",
+            "label": "t:sections.main-product.blocks.collapsible_tab.settings.content.label"
+          },
+          {
+            "id": "page",
+            "type": "page",
+            "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.main-product.blocks.collapsible_tab.settings.image.label"
+          }
+        ]
+      }, 
+      {
+        "type": "pickup_avaiability",
+        "name": "t:sections.main-product.blocks.pickup_availability.name",
+        "limit": 1
+      }
+    ],
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.main-product.settings.header.content",
+        "info": "t:sections.main-product.settings.header.info"
+      },
+      {
+        "type": "select",
+        "id": "gallery_style",
+        "label": "t:sections.main-product.settings.gallery_style.label",
+        "options": [
+          {
+            "value": "scroll",
+            "label": "t:sections.main-product.settings.gallery_style.options__1.label"
+          },
+          {
+            "value": "slider",
+            "label": "t:sections.main-product.settings.gallery_style.options__2.label"
+          }
+        ],
+        "default": "scroll",
+        "info": "t:sections.main-product.settings.gallery_style.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "gallery_aspect",
+        "label": "t:sections.split-extra-words.sections.main-product.settings.gallery_aspect.label",
+        "info": "t:sections.split-extra-words.sections.main-product.settings.gallery_aspect.info",
+        "default": false
+      },
+      {
+        "type": "radio",
+        "id": "gallery_pagination",
+        "label": "t:sections.main-product.settings.gallery_pagination.label",
+        "options": [
+          {
+            "value": "dots",
+            "label": "t:sections.main-product.settings.gallery_pagination.options__1.label"
+          },
+          {
+            "value": "thumbnails",
+            "label": "t:sections.main-product.settings.gallery_pagination.options__2.label"
+          }
+        ],
+        "default": "dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "t:sections.main-product.settings.enable_zoom.label",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label": "t:sections.main-product.settings.enable_video_looping.label",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

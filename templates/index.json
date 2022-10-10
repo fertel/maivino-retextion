@@ -1,0 +1,679 @@
+{
+  "sections": {
+    "16372498804121dda9": {
+      "type": "split-screen-slider",
+      "blocks": {
+        "1637249880c19b891c-2": {
+          "type": "slide",
+          "settings": {
+            "tagline": "",
+            "title": "Delicious wine anywhere, anytime",
+            "subtitle": "Organic wines handcrafted for the adventurous",
+            "button_label": "Explore all",
+            "button_link": "shopify:\/\/collections\/2022-all-wine",
+            "image": "shopify:\/\/shop_images\/RoseWine_HP.png",
+            "mobile_image": "shopify:\/\/shop_images\/RoseWine_HP.png",
+            "video": ""
+          }
+        },
+        "1637249880c19b891c-0": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "tagline": "Behind the Bag",
+            "title": "Single-origin wine crafted with intention",
+            "subtitle": "",
+            "button_label": "Learn more",
+            "button_link": "shopify:\/\/collections\/new-os2-0",
+            "image": "shopify:\/\/shop_images\/Maivino_Rose_Pour_Gif_V1_384.jpg",
+            "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7dd01af162e9475da9235509c09c63f8.mp4"
+          }
+        },
+        "1637249880c19b891c-1": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "tagline": "",
+            "title": "By founders who respect the hands behind the wine",
+            "subtitle": "",
+            "button_label": "Learn More",
+            "button_link": "",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2022-07-15_at_10.56.40_AM.png",
+            "video": ""
+          }
+        }
+      },
+      "block_order": [
+        "1637249880c19b891c-2",
+        "1637249880c19b891c-0",
+        "1637249880c19b891c-1"
+      ],
+      "settings": {
+        "desktop_layout": "split",
+        "desktop_image_positioning": "image-on-left",
+        "desktop_text": "rgba(0,0,0,0)",
+        "desktop_background": "#ffffff",
+        "desktop_overlay": "rgba(0,0,0,0)",
+        "mobile_height": "75vh",
+        "mobile_text": "#ffffff",
+        "mobile_background": "#000000",
+        "heading_size": "h1"
+      }
+    },
+    "1636443645b6d4e74b": {
+      "type": "video-background",
+      "blocks": {
+        "a987b00a-1382-420a-9af8-a3cc773b3b89": {
+          "type": "heading",
+          "settings": {
+            "heading": "Handcrafted organic wines",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "a987b00a-1382-420a-9af8-a3cc773b3b89"
+      ],
+      "settings": {
+        "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/8b1e84ef5e3f48ccaf5f4a99d19cae4e.mp4",
+        "image": "shopify:\/\/shop_images\/Maivino_Rose_Pour_Gif_V1_384.jpg",
+        "video_height": "56.25%",
+        "text_alignment": "horizontal-center vertical-middle",
+        "custom_text": "#ffffff",
+        "custom_overlay": "rgba(0,0,0,0)"
+      }
+    },
+    "16372293330d0f5bf6": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Single-origin wine crafted with intention",
+        "subtitle": "",
+        "collection": "organic-wine",
+        "collection_rows": 4,
+        "show_view_all": true
+      }
+    },
+    "1657921057f19f0b29": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "2021 Batch",
+        "subtitle": "On sale",
+        "collection": "2021-batch",
+        "collection_rows": 2,
+        "show_view_all": true
+      }
+    },
+    "1657900643c8dc29b5": {
+      "type": "collection-slider",
+      "disabled": true,
+      "settings": {
+        "title": "Single-origin wine crafted with intention",
+        "collection": "organic-wine",
+        "products_per_page": 3,
+        "show_view_all": false
+      }
+    },
+    "1636106673daa45393": {
+      "type": "testimonials",
+      "blocks": {
+        "1636106673daa45393-0": {
+          "type": "text",
+          "settings": {
+            "quote_content": "<p>Made with organic grapes and fermented with indigenous yeast<\/p>",
+            "quote_author": "",
+            "quote_caption": ""
+          }
+        },
+        "1636106673daa45393-1": {
+          "type": "text",
+          "settings": {
+            "quote_content": "<p>Airtight spout keeps wine fresh for 30 days after your first glass<\/p>",
+            "quote_author": "",
+            "quote_caption": ""
+          }
+        },
+        "95c555f2-e81f-4479-895d-d65b0f4b142e": {
+          "type": "text",
+          "settings": {
+            "quote_content": "<p>Packaging reduces wine's carbon footprint by 80%<\/p>",
+            "quote_author": "",
+            "quote_caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "1636106673daa45393-0",
+        "1636106673daa45393-1",
+        "95c555f2-e81f-4479-895d-d65b0f4b142e"
+      ],
+      "settings": {
+        "title": "Prepared with care",
+        "subtitle": "",
+        "show_avatars": false,
+        "custom_background": "#e9caa8",
+        "custom_text": "#1c1c1c",
+        "mobile_layout": true
+      }
+    },
+    "163825849356f88edc": {
+      "type": "gallery",
+      "disabled": true,
+      "blocks": {
+        "1638258493b25d0aa0-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC3067.jpg",
+            "alignment": "50% 50%",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "1638258493b25d0aa0-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "alignment": "50% 50%",
+            "link": "",
+            "caption": ""
+          }
+        },
+        "1638258493b25d0aa0-2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "alignment": "50% 50%",
+            "link": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "1638258493b25d0aa0-0",
+        "1638258493b25d0aa0-1",
+        "1638258493b25d0aa0-2"
+      ],
+      "settings": {
+        "image_height": "half"
+      }
+    },
+    "1636106675d59d7642": {
+      "type": "rich-text",
+      "blocks": {
+        "1636106675d59d7642-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Behind the bag"
+          }
+        },
+        "1636106675d59d7642-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We all know what it's like to have that conversation...with ourselves or a partner - should we open a bottle. <br\/><br\/>We started Mai Vino because we hate waste but love wine and believe that having a great glass of wine shouldn't be difficult OR expensive. <br\/><br\/>So we decided to do something about it. We work directly with winemakers and growers from around the world to produce responsibly grown and beautifully balanced single-origin wines. We then package these wine in airtight pouches that keep wine fresher longer and reduces its carbon footprint by 80%. <br\/><br\/>We believe that the best wines are unfussy and fun to be around - so grab a glass and let us know what you think!  <br\/><br\/>xx, <br\/>Pam & Mai :) <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1636106675d59d7642-0",
+        "1636106675d59d7642-1"
+      ],
+      "settings": {
+        "title": "",
+        "btn_label": "",
+        "btn_url": "",
+        "bg_img": "shopify:\/\/shop_images\/Screen_Shot_2022-05-05_at_6.00.09_PM.png",
+        "desktop_image_positioning": "image-on-left",
+        "bg_overlay": false,
+        "custom_background": "#ffffff",
+        "custom_text": "#1c1c1c"
+      }
+    },
+    "165800062833619eeb": {
+      "type": "testimonials2",
+      "blocks": {
+        "16580006282832534c-1": {
+          "type": "text",
+          "settings": {
+            "quote_content": "<p>\"Having a pouch with a spout meant that I could pour myself a glass without worrying about finishing a bottle\"<\/p>",
+            "quote_author": "",
+            "quote_caption": "",
+            "quote_avatar": "shopify:\/\/shop_images\/food-wine-logo-png.png"
+          }
+        },
+        "bc9fe0dc-9a6a-44e8-a54c-a0b21c9b07b4": {
+          "type": "text",
+          "settings": {
+            "quote_content": "<p>\"One Real Simple editor praised the wines as “refreshing,” “lightly acidic,” “super-easy-drinking wines.”<\/p>",
+            "quote_author": "",
+            "quote_caption": "",
+            "quote_avatar": "shopify:\/\/shop_images\/logo-real-simple.png"
+          }
+        },
+        "16580006282832534c-0": {
+          "type": "text",
+          "settings": {
+            "quote_content": "<p>\"The best wine subscription service if you want to do the most good while still having some fun.\"<\/p>",
+            "quote_author": "",
+            "quote_caption": "",
+            "quote_avatar": "shopify:\/\/shop_images\/Glamour_dfecd188-8932-4e47-83e5-f229e1ee1c32.png"
+          }
+        }
+      },
+      "block_order": [
+        "16580006282832534c-1",
+        "bc9fe0dc-9a6a-44e8-a54c-a0b21c9b07b4",
+        "16580006282832534c-0"
+      ],
+      "settings": {
+        "title": "In the press",
+        "subtitle": "",
+        "show_avatars": true,
+        "custom_background": "#e9caa8",
+        "custom_text": "rgba(0,0,0,0)",
+        "mobile_layout": true
+      }
+    },
+    "16361066840a222f4b": {
+      "type": "image-with-text",
+      "disabled": true,
+      "blocks": {
+        "16361066840a222f4b-0": {
+          "type": "image",
+          "settings": {
+            "subtitle": "Share your latest news",
+            "title": "Write your story",
+            "button_label": "Explore",
+            "url": "",
+            "image_alignment": "50% 50%",
+            "custom_text": "rgba(0,0,0,0)",
+            "custom_overlay": "rgba(0,0,0,0)"
+          }
+        },
+        "16361066840a222f4b-1": {
+          "type": "image",
+          "settings": {
+            "subtitle": "Share your latest news",
+            "title": "Write your story",
+            "button_label": "Explore",
+            "url": "",
+            "image_alignment": "50% 50%",
+            "custom_text": "rgba(0,0,0,0)",
+            "custom_overlay": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "16361066840a222f4b-0",
+        "16361066840a222f4b-1"
+      ],
+      "settings": {
+        "image_height": "full",
+        "text_alignment": "horizontal-center vertical-middle"
+      }
+    },
+    "1637571021f6bdff72": {
+      "type": "heading",
+      "disabled": true,
+      "blocks": {
+        "1637571020263843ae-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h2"
+          }
+        },
+        "1637571020263843ae-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "1637571020263843ae-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "LEARN more",
+            "button_link": "shopify:\/\/pages\/about-us"
+          }
+        }
+      },
+      "block_order": [
+        "1637571020263843ae-0",
+        "1637571020263843ae-1",
+        "1637571020263843ae-2"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "1637572030c4b90431": {
+      "type": "collection-slider",
+      "disabled": true,
+      "settings": {
+        "title": "2021 Batch Sale",
+        "collection": "sale",
+        "products_per_page": 9,
+        "show_view_all": true
+      }
+    },
+    "163757206347de448b": {
+      "type": "blog-posts",
+      "disabled": true,
+      "blocks": {
+        "1637572063adf12f86-0": {
+          "type": "info",
+          "settings": {
+            "show_date": true,
+            "show_author": false
+          }
+        },
+        "1637572063adf12f86-1": {
+          "type": "title",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "1637572063adf12f86-0",
+        "1637572063adf12f86-1"
+      ],
+      "settings": {
+        "title": "Latest Articles",
+        "blog": "news",
+        "post_limit": 4,
+        "show_view_all": true,
+        "custom_text": "#ffffff",
+        "custom_overlay": "#000000"
+      }
+    },
+    "16377493211fd93093": {
+      "type": "featured-product",
+      "disabled": true,
+      "blocks": {
+        "1637749321a1e63c4d-0": {
+          "type": "header",
+          "settings": {
+            "show_vendor": true,
+            "show_badge": true,
+            "show_reviews": true,
+            "show_tax_info": false,
+            "show_sku": false,
+            "show_barcode": false,
+            "stick_product_header_on_mobile": true
+          }
+        },
+        "1637749321a1e63c4d-1": {
+          "type": "variant_picker",
+          "settings": {
+            "variants_style": "radio",
+            "show_color_swatches": true,
+            "show_quantities": "no"
+          }
+        },
+        "1637749321a1e63c4d-2": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_quantity_selector": true
+          }
+        },
+        "1637749321a1e63c4d-3": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "a3f4f0ac-9b9b-4965-9f53-d10d3dfcf77c": {
+          "type": "product_link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "1637749321a1e63c4d-0",
+        "1637749321a1e63c4d-1",
+        "1637749321a1e63c4d-2",
+        "1637749321a1e63c4d-3",
+        "a3f4f0ac-9b9b-4965-9f53-d10d3dfcf77c"
+      ],
+      "settings": {
+        "product": "",
+        "gallery_style": "scroll",
+        "gallery_aspect": false,
+        "gallery_pagination": "dots",
+        "enable_zoom": true,
+        "enable_video_looping": false
+      }
+    },
+    "1637674728c7c82700": {
+      "type": "countdown-banner",
+      "disabled": true,
+      "blocks": {
+        "1637674728a99cfc06-0": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Promote your greatest products through a flash sale!<\/p>",
+            "text_size": "text-size--larger"
+          }
+        },
+        "1637674728a99cfc06-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sales Promotions",
+            "heading_size": "h1"
+          }
+        },
+        "1637674728a99cfc06-2": {
+          "type": "countdown",
+          "settings": {
+            "countdown_year": 2022,
+            "countdown_month": 1,
+            "countdown_day": 1,
+            "countdown_hour": 0,
+            "countdown_zone": "0"
+          }
+        },
+        "1637674728a99cfc06-3": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "shopify:\/\/pages\/sale"
+          }
+        }
+      },
+      "block_order": [
+        "1637674728a99cfc06-0",
+        "1637674728a99cfc06-1",
+        "1637674728a99cfc06-2",
+        "1637674728a99cfc06-3"
+      ],
+      "settings": {
+        "banner_height": "full",
+        "text_alignment": "horizontal-center vertical-middle",
+        "image_alignment": "50% 50%",
+        "custom_text": "#ffffff",
+        "custom_overlay": "#000000"
+      }
+    },
+    "165789679745e34275": {
+      "type": "apps",
+      "disabled": true,
+      "blocks": {
+        "c09fb562-8de5-4df7-a4e0-d7f9346e1f4d": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        },
+        "117322d7-1e14-4b05-84e2-493c7de94372": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        },
+        "c1e76de1-b6b0-476f-870b-937a1cb37a77": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/all_reviews_page\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "extra_wrapper_classes": "page-width page-width--narrow"
+          }
+        }
+      },
+      "block_order": [
+        "c09fb562-8de5-4df7-a4e0-d7f9346e1f4d",
+        "117322d7-1e14-4b05-84e2-493c7de94372",
+        "c1e76de1-b6b0-476f-870b-937a1cb37a77"
+      ],
+      "settings": {
+      }
+    },
+    "16371348113d6d6d6d": {
+      "type": "collection-list",
+      "disabled": true,
+      "blocks": {
+        "1637134811779b275e-0": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1637134811779b275e-1": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "1637134811779b275e-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "kids"
+          }
+        }
+      },
+      "block_order": [
+        "1637134811779b275e-0",
+        "1637134811779b275e-1",
+        "1637134811779b275e-2"
+      ],
+      "settings": {
+        "title": "Collections",
+        "text_alignment": "horizontal-left vertical-bottom",
+        "custom_background": "#eeeeef",
+        "custom_text": "rgba(0,0,0,0)",
+        "bg_overlay": false
+      }
+    },
+    "165790050434e45aed": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "1657900503c8557d20-0": {
+          "type": "text",
+          "settings": {
+            "title": "Shipping details",
+            "body": "<p>Write some useful information about your shipping details<\/p><p>Link to your <a href='#'>shipping policy<\/a>.<\/p>"
+          }
+        },
+        "1657900503c8557d20-1": {
+          "type": "text",
+          "settings": {
+            "title": "Delivery details",
+            "body": "<p>Let your customers know if you offer free delivery for certain types of orders<\/p><p>Link to your <a href='#'>offers page<\/a>.<\/p>"
+          }
+        },
+        "1657900503c8557d20-2": {
+          "type": "text",
+          "settings": {
+            "title": "Returns details",
+            "body": "<p>Show customers how much time they have for testing your products<\/p><p>Link to your <a href='#'>returns policy<\/a>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1657900503c8557d20-0",
+        "1657900503c8557d20-1",
+        "1657900503c8557d20-2"
+      ],
+      "settings": {
+        "title": "Frequently asked questions",
+        "open_first": false,
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "16579047153e047f6d": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "1657904715e9849f70-0": {
+          "type": "text",
+          "settings": {
+            "title": "Shipping details",
+            "body": "<p>Write some useful information about your shipping details<\/p><p>Link to your <a href=\"#\">shipping policy<\/a>.<\/p>"
+          }
+        },
+        "1657904715e9849f70-1": {
+          "type": "text",
+          "settings": {
+            "title": "Delivery details",
+            "body": "<p>Let your customers know if you offer free delivery for certain types of orders<\/p><p>Link to your <a href='#'>offers page<\/a>.<\/p>"
+          }
+        },
+        "1657904715e9849f70-2": {
+          "type": "text",
+          "settings": {
+            "title": "Returns details",
+            "body": "<p>Show customers how much time they have for testing your products<\/p><p>Link to your <a href='#'>returns policy<\/a>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1657904715e9849f70-0",
+        "1657904715e9849f70-1",
+        "1657904715e9849f70-2"
+      ],
+      "settings": {
+        "title": "Crafted with love and care",
+        "open_first": false,
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "1658061801f975fc1a": {
+      "type": "apps",
+      "blocks": {
+        "7047d9f7-22b9-41ae-a2b6-d22807a33b6e": {
+          "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/form-embed-block\/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "JwT94Q"
+          }
+        }
+      },
+      "block_order": [
+        "7047d9f7-22b9-41ae-a2b6-d22807a33b6e"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "16372498804121dda9",
+    "1636443645b6d4e74b",
+    "16372293330d0f5bf6",
+    "1657921057f19f0b29",
+    "1657900643c8dc29b5",
+    "1636106673daa45393",
+    "163825849356f88edc",
+    "1636106675d59d7642",
+    "165800062833619eeb",
+    "16361066840a222f4b",
+    "1637571021f6bdff72",
+    "1637572030c4b90431",
+    "163757206347de448b",
+    "16377493211fd93093",
+    "1637674728c7c82700",
+    "165789679745e34275",
+    "16371348113d6d6d6d",
+    "165790050434e45aed",
+    "16579047153e047f6d",
+    "1658061801f975fc1a"
+  ]
+}

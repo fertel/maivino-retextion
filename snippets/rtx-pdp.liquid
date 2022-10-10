@@ -1,0 +1,271 @@
+
+{%- liquid
+    assign current_variant = product.selected_or_first_available_variant | default: product.variants.first
+    assign current_selling_plan_allocation = current_variant.selected_selling_plan_allocation
+     
+    if current_selling_plan_allocation == nil and current_variant.requires_selling_plan
+      assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+    endif
+
+-%}
+{% for selling_plan in product.selling_plan_groups %}
+    {% if selling_plan.app_id == '5859381' %}
+    {% assign rtx_selling_plan = selling_plan %}
+    {% endif %}
+{% endfor %}
+
+{% assign first_selling_plan_allocation = product.variants.first.selling_plan_allocations[0] %}
+    {% if product.selling_plan_groups[0].name %}
+        {% comment %} <input name="id" id="variant_{{ product.id }}" value="{{ current_variant.id }}"> {% endcomment %}
+        <input type='hidden' name="selling_plan" id="selling_plan_{{ product.id }}" value="{{ current_selling_plan_allocation.selling_plan.id | default: '' }}">
+        <div class="rtx_buy_box" id="rtx_buy_box_{{ product.id }}">
+            <div class="rtx_container" data-product='{{ product | json }}'>
+                {% unless product.requires_selling_plan %}
+                    <div class="rtx_option_{{ product.id }} rtx_option_one_time" id="rtx_option_one_time">
+                        <div class="rtx_option_selector_one">
+                            <label for="radio_one_{{ product.id }}" class="rtx_option_label">
+                            <input type="radio" id='radio_one_{{ product.id }}' class="radio_rtx" value="onetime" name="selling_plan_select" data-product_id="{{ product.id }}"  >
+                            <div class="rtx_option_heading">
+                                <div class='one_time_title'>
+                                    One-Time Purchase
+                                   
+                                </div>
+                            </div>
+                            </label>
+                            <span id=one_time_price> {{product.variants[0].price | money}}</span>
+                        </div>
+                    </div>
+                {% endunless %}
+                <div id='rtx_sands_block'>
+                    <div class="rtx_option_{{ product.id }} rtx_option_sub" id="rtx_option_sub" >
+                        <div class="rtx_option_selector_sub">
+                            <label for="radio_sub_{{ product.id }}" class="rtx_option_label">
+
+                            <input type="radio" id='radio_sub_{{ product.id }}' class="radio_rtx" value="subsave" name="selling_plan_select" data-product_id="{{ product.id }}" checked >
+                            <div class="rtx_option_heading">
+                                <div class='sub_title'>
+                                    {{ rtx_selling_plan.name }} 
+                                  
+                                </div>
+                            </div>
+                            </label>
+                            <span id=sub_price> {{ first_selling_plan_allocation.price | money }}</span>
+                        </div>
+                        <div class="rtx_option_plans" >
+                            <select name="rtx_option_plans_dropdown" id="rtx_option_plans_dropdown" data-product_id="{{ product.id }}">
+                                {% for selling_plan in rtx_selling_plan.selling_plans %}
+                                    <option class='rtx_option_name' value="{{ selling_plan.id }}">{{ selling_plan.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <script>
+        var product = {{ product | json }}
+        var rtxSPG = {{ rtx_selling_plan | json }}
+        var currentProductId = "{{ product.id }}";
+
+        var doubleSPG = []
+        for( var i = 0; i < product.selling_plan_groups[0].selling_plans.length; i++) {
+            if(product.selling_plan_groups[0].selling_plans[i].price_adjustments[0].value === 15) {
+                doubleSPG.push(product.selling_plan_groups[0].selling_plans[i])
+            }
+        }
+
+        var getCurrentVariantAndSetPrice = (variantLabel, variantOption) => {
+            for(let i = 0; i < product.variants.length; i++) {
+                if(product.variants[i][variantOption] === (Number(variantLabel) ? Number(variantLabel) : variantLabel)) {
+                    var locale = window.Shopify.locale || "en";
+                    var currency = window.Shopify.currency.active || "USD";
+                    var onetimePrice = new Intl.NumberFormat(locale, {
+                    style: "currency",
+                    currency,
+                    }).format(product.variants[i].selling_plan_allocations[0].compare_at_price / 100);
+                    var subPrice = new Intl.NumberFormat(locale, {
+                    style: "currency",
+                    currency,
+                    }).format(product.variants[i].selling_plan_allocations[0].price / 100);
+                    document.getElementById("one_time_price").innerText = onetimePrice;
+                    document.getElementById("sub_price").innerText = subPrice; 
+                }
+            }
+        }
+
+
+        function setSellingPlan(prod) {
+            var selectedOption = document.querySelector(`#rtx_buy_box_${prod.id} input[name="selling_plan_select"]:checked`);
+            if (selectedOption.value === "onetime") {
+                document.querySelector(`#selling_plan_${prod.id}`).value = "";
+            } else {
+                document.querySelector(`#selling_plan_${prod.id}`).value = document.querySelector(`#rtx_buy_box_${prod.id} #rtx_option_plans_dropdown`).value;
+            }
+        }
+        ///Loading Code
+        setSellingPlan(product)
+        document.getElementById('rtx_sands_block').classList.add('rtx--active');
+        if("{{ current_variant.option1 }}" === "Single") {
+            setTimeout(()=> {
+                document.querySelector(`#selling_plan_${product.id}`).value = "";
+            })
+            document.querySelectorAll(`#rtx_buy_box_${product.id}`)[0].style.display = 'none'
+        } else if("{{ current_variant.option1 }}" === "Double") {
+            setTimeout(()=> {
+                var spgDouble = document.querySelector('#rtx_option_plans_dropdown')
+                for(let j = 0; j < spgDouble.children.length; j++) {
+                    spgDouble.children[j].value =  doubleSPG[j].id
+                }
+                document.querySelector('.sub_title').innerText = product.selling_plan_groups[0].name
+                console.log('Dset')
+                setSellingPlan(product)
+                getCurrentVariantAndSetPrice(window.location.search.split('variant=')[1], 'id')
+            })
+        } else {
+            getCurrentVariantAndSetPrice(window.location.search.split('variant=')[1], 'id')
+        }
+
+        ///Dropdown Event Listner
+        document.querySelector("#rtx_buy_box_{{ product.id }} #rtx_option_plans_dropdown").addEventListener("change", function (e) {
+            setSellingPlan(product);
+        });  
+        
+        ////Variant Select Event Listner
+        var allVariantButtons = document.querySelectorAll('.product-variant__container')
+        allVariantButtons.forEach((varButton)=> {
+            varButton.addEventListener('click', function (e) {
+                if(e.target.value === 'Single') {
+                    setTimeout(()=> {
+                        document.querySelector(`#selling_plan_${product.id}`).value = "";
+                    })
+                    document.querySelectorAll(`#rtx_buy_box_${product.id}`)[0].style.display = 'none'
+                } else {
+                    document.querySelectorAll(`#rtx_buy_box_${product.id}`)[0].style.display = 'block'
+                }
+                if(e.target.value === 'Double' || e.target.value === '"Double / Rosé + Pinot Noir"') {
+                    document.querySelectorAll(`#rtx_buy_box_${product.id}`)[0].style.display = 'block'
+                    var spgDouble = document.querySelector('#rtx_option_plans_dropdown')
+                    for(let j = 0; j < spgDouble.children.length; j++) {
+                        spgDouble.children[j].value =  doubleSPG[j].id
+                    }
+                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[0].name
+                    setSellingPlan(product)
+                } else if (e.target.value === 'Triple') {
+                    var spgRest = document.querySelector('#rtx_option_plans_dropdown')
+                    for(let i = 0; i < spgRest.children.length; i++) {
+                        spgRest.children[i].value =  rtxSPG.selling_plans[i].id
+                    }
+                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[1].name
+                    setSellingPlan(product)
+                } else if (e.target.value === 'Quad') {
+                    var spgRest = document.querySelector('#rtx_option_plans_dropdown')
+                    for(let i = 0; i < spgRest.children.length; i++) {
+                        spgRest.children[i].value =  rtxSPG.selling_plans[i].id
+                    }
+                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[1].name
+                    setSellingPlan(product)
+                } else if (e.target.value === 'Sixer') {
+                    var spgRest = document.querySelector('#rtx_option_plans_dropdown')
+                    for(let i = 0; i < spgRest.children.length; i++) {
+                        spgRest.children[i].value =  rtxSPG.selling_plans[i].id
+                    }
+                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[1].name
+                    setSellingPlan(product)
+                }
+                getCurrentVariantAndSetPrice(e.target.value, 'option1')
+            })
+        })
+        
+        document.querySelectorAll(`#rtx_buy_box_${currentProductId} .rtx_option_${currentProductId}`).forEach((div) => {      
+            div.addEventListener('click', function (e) {
+                var selectedOption = document.querySelector(`#rtx_buy_box_${currentProductId} input[name="selling_plan_select"]:checked`);
+                if(selectedOption.value === 'subsave'){ 
+                    document.getElementById('rtx_sands_block').classList.add('rtx--active');
+                    document.getElementById('rtx_option_one_time').classList.remove('rtx--active');
+                    document.querySelectorAll(`#rtx_buy_box_${product.id} .rtx_option_plans`).forEach((plans) => {
+                        plans.style.display = "block";
+                    });
+                    var rad1 = document.getElementById(`radio_one_${currentProductId}`)
+                    const noClickBtn = document.getElementById(`radio_one_${currentProductId}`);
+                    noClickBtn.checked = false; 
+                    const yesClickBtn = document.getElementById(`radio_sub_${currentProductId}`);
+                    yesClickBtn.checked = true; 
+                    setSellingPlan(product)
+                } else if (selectedOption.value === 'onetime') {
+                    document.getElementById('rtx_sands_block').classList.remove('rtx--active');
+                    document.getElementById('rtx_option_one_time').classList.add('rtx--active');
+                    document.querySelectorAll(`#rtx_buy_box_${product.id} .rtx_option_plans`).forEach((plans) => {
+                        plans.style.display = "none";
+                    });
+                    document.querySelector("#rtx_buy_box_{{ product.id }} #rtx_option_plans_dropdown").selectedIndex = 0
+                    const noClickBtn = document.getElementById(`radio_sub_${currentProductId}`);
+                    noClickBtn.checked = false; 
+                    const yesClickBtn = document.getElementById(`radio_one_${currentProductId}`);
+                    yesClickBtn.checked = true;
+                    var spgOneTimeValue = "";
+                    document.querySelector(`#selling_plan_${currentProductId}`).value = spgOneTimeValue;
+                }
+            });
+        });
+    </script>
+
+<style> 
+.rtx_buy_box {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.radio_rtx {
+    margin-top: 4px !important;
+}
+#rtx_option_plans_dropdown {
+    margin-top: 10px;
+    border-radius: 50px;
+    width: 50% !important;
+    border: 2px solid #000;
+}
+.one_time_title{
+    display: inline-flex;
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 10px;
+}
+.sub_title {
+    display: inline-flex;
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 10px;
+}
+.rtx_option_selector_sub {
+    display: flex;
+    font-size: large;
+    justify-content: space-between;
+    width: 50%;
+}
+.rtx_option_selector_one {
+    display: flex;
+    font-size: large;
+    justify-content: space-between;
+    width: 50%;
+}
+label {
+    display: flex;
+}
+.rtx_option_sub {
+    margin-top: 12px;
+}
+@media only screen and (max-width: 1440px) {
+    .rtx_option_selector_sub {
+        display: flex;
+        font-size: large;
+        justify-content: space-between;
+        width: auto !important;
+    }
+    .rtx_option_selector_one {
+        display: flex;
+        font-size: large;
+        justify-content: space-between;
+        width: auto !important;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "blocks": {
+        "11a01159-feaf-428e-9485-623c3ee2629e": {
+          "type": "collection",
+          "settings": {
+            "collection": "organic-wine",
+            "image": "shopify:\/\/shop_images\/Maivino_Rose_Pour_Gif_V1_384.jpg"
+          }
+        },
+        "0878108c-ecc3-467f-ba8d-5378260e3079": {
+          "type": "collection",
+          "settings": {
+            "collection": "2021-batch"
+          }
+        }
+      },
+      "block_order": [
+        "11a01159-feaf-428e-9485-623c3ee2629e",
+        "0878108c-ecc3-467f-ba8d-5378260e3079"
+      ],
+      "settings": {
+        "text_alignment": "horizontal-left vertical-bottom",
+        "custom_text": "rgba(0,0,0,0)",
+        "custom_overlay": "rgba(0,0,0,0)",
+        "display_type": "selected",
+        "sort": "alphabetical"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
