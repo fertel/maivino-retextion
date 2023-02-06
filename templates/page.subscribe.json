@@ -1,0 +1,173 @@
+{
+  "sections": {
+    "6e944576-7cea-435b-8edc-805a85500cd4": {
+      "type": "split-screen-slider",
+      "disabled": true,
+      "blocks": {
+        "template--16317751558382__6e944576-7cea-435b-8edc-805a85500cd4-1667326492186185d2-0": {
+          "type": "slide",
+          "settings": {
+            "tagline": "Subscribe and save",
+            "title": "Build Your Own Subscription",
+            "subtitle": "Enjoy up to 18% off order and exclusive perks",
+            "button_label": "Start Building",
+            "button_link": "",
+            "image": "shopify:\/\/shop_images\/Untitled_design_1.png",
+            "video": ""
+          }
+        },
+        "template--16317751558382__6e944576-7cea-435b-8edc-805a85500cd4-1667326492186185d2-1": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "tagline": "Why not",
+            "title": "Write about yourself",
+            "subtitle": "Include some awesome images",
+            "button_label": "Learn more",
+            "button_link": "",
+            "video": ""
+          }
+        },
+        "template--16317751558382__6e944576-7cea-435b-8edc-805a85500cd4-1667326492186185d2-2": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "tagline": "Take the opportunity to",
+            "title": "Promote your products",
+            "subtitle": "Include various promotions and flash sales",
+            "button_label": "Shop now",
+            "button_link": "",
+            "video": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16317751558382__6e944576-7cea-435b-8edc-805a85500cd4-1667326492186185d2-0",
+        "template--16317751558382__6e944576-7cea-435b-8edc-805a85500cd4-1667326492186185d2-1",
+        "template--16317751558382__6e944576-7cea-435b-8edc-805a85500cd4-1667326492186185d2-2"
+      ],
+      "settings": {
+        "desktop_layout": "split",
+        "desktop_image_positioning": "image-on-left",
+        "desktop_text": "rgba(0,0,0,0)",
+        "desktop_background": "rgba(0,0,0,0)",
+        "desktop_overlay": "rgba(0,0,0,0)",
+        "mobile_height": "var(--window-height)",
+        "mobile_text": "rgba(0,0,0,0)",
+        "mobile_background": "rgba(0,0,0,0)",
+        "heading_size": "h1"
+      }
+    },
+    "2ed81436-9680-44c2-9b3e-ce821ced4541": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "template--16317751558382__2ed81436-9680-44c2-9b3e-ce821ced4541-1667326447eca3b08e-0": {
+          "type": "text",
+          "settings": {
+            "title": "Grape savings",
+            "body": "<p>Enjoy up to 18% off when you join the Mai Vino Grape Fam<\/p>"
+          }
+        },
+        "template--16317751558382__2ed81436-9680-44c2-9b3e-ce821ced4541-1667326447eca3b08e-1": {
+          "type": "text",
+          "settings": {
+            "title": "Exclusive perks and promos",
+            "body": "<p>Enjoy early access to new wine and promo drops as well as exclusive discounts.<\/p>"
+          }
+        },
+        "template--16317751558382__2ed81436-9680-44c2-9b3e-ce821ced4541-1667326447eca3b08e-2": {
+          "type": "text",
+          "settings": {
+            "title": "No strings attached",
+            "body": "<p>We make it easy to cancel, skip, or swap orders at anytime via text message or emails.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16317751558382__2ed81436-9680-44c2-9b3e-ce821ced4541-1667326447eca3b08e-0",
+        "template--16317751558382__2ed81436-9680-44c2-9b3e-ce821ced4541-1667326447eca3b08e-1",
+        "template--16317751558382__2ed81436-9680-44c2-9b3e-ce821ced4541-1667326447eca3b08e-2"
+      ],
+      "settings": {
+        "title": "Why subscribe?",
+        "open_first": false,
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "7fa0bb04-e4c8-43b1-b4dd-af60db87fb53": {
+      "type": "heading",
+      "disabled": true,
+      "blocks": {
+        "template--16317751558382__7fa0bb04-e4c8-43b1-b4dd-af60db87fb53-166732649203143c5b-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Build Your Own Subscription",
+            "heading_size": "h2"
+          }
+        },
+        "template--16317751558382__7fa0bb04-e4c8-43b1-b4dd-af60db87fb53-166732649203143c5b-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Enjoy up to 18% off as well as grape perks and promos<\/p>"
+          }
+        },
+        "template--16317751558382__7fa0bb04-e4c8-43b1-b4dd-af60db87fb53-166732649203143c5b-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Subscribe today",
+            "button_link": ""
+          }
+        },
+        "95f6f83e-53dd-4cfd-ae6d-8c1016ad2ec4": {
+          "type": "line",
+          "disabled": true,
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16317751558382__7fa0bb04-e4c8-43b1-b4dd-af60db87fb53-166732649203143c5b-0",
+        "template--16317751558382__7fa0bb04-e4c8-43b1-b4dd-af60db87fb53-166732649203143c5b-1",
+        "template--16317751558382__7fa0bb04-e4c8-43b1-b4dd-af60db87fb53-166732649203143c5b-2",
+        "95f6f83e-53dd-4cfd-ae6d-8c1016ad2ec4"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "custom_background": "rgba(0,0,0,0)",
+        "custom_text": "rgba(0,0,0,0)"
+      }
+    },
+    "166732647601938412": {
+      "type": "apps",
+      "disabled": true,
+      "blocks": {
+        "c5d14253-7718-4785-9528-12433e9dafc3": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "c5d14253-7718-4785-9528-12433e9dafc3"
+      ],
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "split"
+      }
+    }
+  },
+  "order": [
+    "6e944576-7cea-435b-8edc-805a85500cd4",
+    "2ed81436-9680-44c2-9b3e-ce821ced4541",
+    "7fa0bb04-e4c8-43b1-b4dd-af60db87fb53",
+    "166732647601938412",
+    "main"
+  ]
+}

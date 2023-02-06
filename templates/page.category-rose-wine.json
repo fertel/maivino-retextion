@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "e359ef24-fece-4d55-b5dd-e61099024903": {
+      "type": "image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rose_Wine.jpg"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "full",
+        "image_1": "shopify:\/\/shop_images\/image_2022_10_28T17_51_00_465Z.png"
+      }
+    },
+    "a8fd3abd-b9b6-425f-8d5c-0cbe832c3aa6": {
+      "type": "featured-product",
+      "blocks": {
+        "template--16643854237934__a8fd3abd-b9b6-425f-8d5c-0cbe832c3aa6-166626132058906da4-0": {
+          "type": "header",
+          "settings": {
+            "show_vendor": false,
+            "show_badge": true,
+            "show_reviews": true,
+            "show_tax_info": false,
+            "show_sku": false,
+            "show_barcode": false,
+            "stick_product_header_on_mobile": true
+          }
+        },
+        "template--16643854237934__a8fd3abd-b9b6-425f-8d5c-0cbe832c3aa6-166626132058906da4-3": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "8c01dd3a-70d2-4524-9b4f-8683e4cbd201": {
+          "type": "product_link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16643854237934__a8fd3abd-b9b6-425f-8d5c-0cbe832c3aa6-166626132058906da4-0",
+        "template--16643854237934__a8fd3abd-b9b6-425f-8d5c-0cbe832c3aa6-166626132058906da4-3",
+        "8c01dd3a-70d2-4524-9b4f-8683e4cbd201"
+      ],
+      "settings": {
+        "product": "rose-wine",
+        "gallery_style": "scroll",
+        "gallery_aspect": false,
+        "gallery_pagination": "dots",
+        "enable_zoom": true,
+        "enable_video_looping": false
+      }
+    }
+  },
+  "order": [
+    "e359ef24-fece-4d55-b5dd-e61099024903",
+    "main",
+    "a8fd3abd-b9b6-425f-8d5c-0cbe832c3aa6"
+  ]
+}

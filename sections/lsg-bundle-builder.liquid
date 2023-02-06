@@ -10,7 +10,7 @@
 
 {% assign bundlesArray = bundlesList | split: '|;|' %}
 
-<div class="lsg-bundle-wrapper" data-lsg-bundle-wrapper>
+<div class="lsg-bundle-wrapper" data-lsg-bundle-wrapper {% if section.settings.setUrl %}data-lsg-bundle-set-url{% endif %}>
     {% assign bundleFirst = true %}
     {% if bundlesCount > 0 %}
         {% assign bundleLoopCount = 0 %}
@@ -30,9 +30,8 @@
     {% endif %}
 </div>
 
-{%- comment -%}
+<link rel="stylesheet" href="{{ 'lsg-bundle.css' | asset_url }}" media="print" onload="this.media='all'">
 <script src="{{ 'lsg-bundle.js' | asset_url }}" defer="defer"></script>
-{%- endcomment -%}
 
 
 {% schema %}
@@ -63,6 +62,18 @@
   ],
   "settings": [
     {
+        "type": "checkbox",
+        "id": "setUrl",
+        "label": "Update URL",
+        "default": false,
+        "info": "Dynamically update URL for preloading bundles"
+    },
+    {
+        "type": "text",
+        "id": "bundle_select_heading",
+        "label": "Bundle Select Heading"
+    },
+    {
         "type": "text",
         "id": "frequency_heading",
         "label": "Frequency Select Heading",
@@ -90,7 +101,7 @@
         "type": "text",
         "id": "sub_atc_text",
         "label": "Sub-ATC Disclaimer",
-        "default": "Sub-ATC Disclaimer"
+        "default": "Free Shipping over $49 | 100% Happiness Guarantee"
     },
     {
         "type": "header",
@@ -101,16 +112,6 @@
         "id": "otp_interval_prefix",
         "label": "Interval/Price Prefix",
         "default": "Your bundle:"
-    },
-    {
-        "type": "header",
-        "content": "Subscription Only"
-    },
-    {
-        "type": "text",
-        "id": "sub_interval_prefix",
-        "label": "Interval/Price Prefix",
-        "default": "Your subscription bundle:"
     }
   ],
   "presets": [

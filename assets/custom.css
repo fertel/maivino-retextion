@@ -1,77 +1,87 @@
-
-
-  age-box.popup {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 250ms linear;
-    padding: 20px;
-  }
-  age-box.popup.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  age-box.popup.active .popup-content {
-    opacity: 1;
-    transform: translateY(0);
-    max-width: 500px;
-
-  }
-  age-box.popup.active .popup-content .popup-text {
-    width: 100%;
-    
-  }
-  .age-button{
-    width: 100%;
-    margin-top: 15px;
-    text-align: center;
-  }
-  
-  
-  @media screen and (max-width: 820px) {
-    age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group {
-      flex-direction: column;
-    }
-    age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group input, age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group button {
-      border-radius: var(--buttons-radius) !important;
-    }
-    age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group button {
-      margin-top: 1em !important;
-    }
-  }
-  @media screen and (max-width: 700px) {
-    age-box.popup .popup-content:not([data-show-image-on-mobile]) .popup-image {
-      display: none;
-    }
-    age-box.popup .popup-content:not([data-show-image-on-mobile]) .popup-text {
-      max-width: none;
-      width: 100%;
-    }
-  
-    age-box.popup .popup-content[data-show-image-on-mobile] {
-      flex-direction: column;
-      max-height: none;
-    }
-    age-box.popup .popup-content[data-show-image-on-mobile] .popup-image, age-box.popup .popup-content[data-show-image-on-mobile] .popup-text {
-      width: 100%;
-      max-width: none;
-    }
+age-box.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 250ms linear;
+  padding: 20px;
 }
-.box__testimonial div.avatar2 {
-    width: 200px;
 
-   position: relative;
+age-box.popup.active {
+  opacity: 1;
+  visibility: visible;
+}
 
+age-box.popup.active .popup-content {
+  opacity: 1;
+  transform: translateY(0);
+  max-width: 500px;
+
+}
+
+age-box.popup.active .popup-content .popup-text {
+  width: 100%;
+
+}
+
+.age-button {
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 820px) {
+  age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group {
+    flex-direction: column;
   }
+
+  age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group input,
+  age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group button {
+    border-radius: var(--buttons-radius) !important;
+  }
+
+  age-box.popup .popup-content:not([data-no-image]) .newsletter-form .input-group button {
+    margin-top: 1em !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  age-box.popup .popup-content:not([data-show-image-on-mobile]) .popup-image {
+    display: none;
+  }
+
+  age-box.popup .popup-content:not([data-show-image-on-mobile]) .popup-text {
+    max-width: none;
+    width: 100%;
+  }
+
+  age-box.popup .popup-content[data-show-image-on-mobile] {
+    flex-direction: column;
+    max-height: none;
+  }
+
+  age-box.popup .popup-content[data-show-image-on-mobile] .popup-image,
+  age-box.popup .popup-content[data-show-image-on-mobile] .popup-text {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.box__testimonial div.avatar2 {
+  width: 200px;
+
+  position: relative;
+
+}
 
 /* 
   [data-tooltip] {
@@ -191,3 +201,6 @@
     opacity: 1;
   }
    */
+.cart-menu .count-holder {
+  line-height: 0.5;
+}

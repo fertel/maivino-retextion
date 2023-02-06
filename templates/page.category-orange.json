@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "97d84035-0137-4483-9d5f-4f4b2bb7e55e": {
+      "type": "image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Orange_Wine_35ee6131-b026-49e9-9018-3412b9106a4a.jpg"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "full",
+        "image_1": "shopify:\/\/shop_images\/image_2022_10_28T17_52_06_214Z.png"
+      }
+    },
+    "5eb0e6eb-2331-43f6-ac09-2893ec4923ec": {
+      "type": "featured-product",
+      "blocks": {
+        "template--16643836018926__5eb0e6eb-2331-43f6-ac09-2893ec4923ec-1666259725f5c29ae3-0": {
+          "type": "header",
+          "settings": {
+            "show_vendor": false,
+            "show_badge": true,
+            "show_reviews": true,
+            "show_tax_info": false,
+            "show_sku": false,
+            "show_barcode": false,
+            "stick_product_header_on_mobile": true
+          }
+        },
+        "template--16643836018926__5eb0e6eb-2331-43f6-ac09-2893ec4923ec-1666259725f5c29ae3-3": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "b603980c-f62b-4432-9405-dbac2993c765": {
+          "type": "product_link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16643836018926__5eb0e6eb-2331-43f6-ac09-2893ec4923ec-1666259725f5c29ae3-0",
+        "template--16643836018926__5eb0e6eb-2331-43f6-ac09-2893ec4923ec-1666259725f5c29ae3-3",
+        "b603980c-f62b-4432-9405-dbac2993c765"
+      ],
+      "settings": {
+        "product": "orange-wine",
+        "gallery_style": "scroll",
+        "gallery_aspect": false,
+        "gallery_pagination": "dots",
+        "enable_zoom": true,
+        "enable_video_looping": false
+      }
+    }
+  },
+  "order": [
+    "97d84035-0137-4483-9d5f-4f4b2bb7e55e",
+    "main",
+    "5eb0e6eb-2331-43f6-ac09-2893ec4923ec"
+  ]
+}

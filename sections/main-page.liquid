@@ -1,21 +1,5 @@
 <div id="section-page" class="site-box-container container--fullscreen {% unless section.settings.layout == 'full' %} box--can-stick {% endunless %}">
 
-  <div class="site-box 
-    {% if section.settings.layout == 'full' %} 
-      box--small-fl-auto box--center-align 
-    {% else %} 
-      box--big box--top-align
-    {% endif %} 
-  lap--box--small-fl-auto box--typo-big box--column-flow box__heading" data-order="0">
-
-    <div class="{% if section.settings.layout == 'split' %} reduce-top-margin {% endif %}">
-      <div class="site-box-content" {% if section.settings.layout == 'full' %} style="text-align:center" {% endif %}>
-        <h1 class="title h1">{{ page.title }}</h1>
-        {%- if settings.headings_hr -%} <hr {% if section.settings.layout == 'full' %} style="margin-left:auto;margin-right:auto" {% endif %} /> {%- endif -%}
-      </div>
-    </div>
-
-  </div>
 
   {%- unless page.content == blank -%}
 
@@ -24,6 +8,7 @@
       <div class="site-box-content {% if section.settings.layout == 'split' %} reduce-top-margin {% endif %}">
         <div>
           <div class="rte">
+            <h1 class="title h1">{{ page.title }}</h1>
             {{ page.content }}
           </div>
         </div>
@@ -55,7 +40,12 @@
         ],
         "info": "t:sections.split-extra-words.sections.main-collection-page.settings.desktop_layout.info",
         "default": "split"
-      }
+      },
+      {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Banner Image"    
+    }
     ]
   }
 {% endschema %}

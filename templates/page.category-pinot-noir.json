@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "eb50faad-7ea5-4966-8256-aa323987e4c0": {
+      "type": "image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Pinot_Noir_Image_49f4aaaa-ff52-4aa3-8430-7b9e957547cd.jpg"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "full",
+        "image_1": "shopify:\/\/shop_images\/image_2022_10_28T17_51_48_694Z.png"
+      }
+    },
+    "93c16429-6c0b-4f74-a1f9-32bc8ee6c6f9": {
+      "type": "featured-product",
+      "blocks": {
+        "template--16643840639214__93c16429-6c0b-4f74-a1f9-32bc8ee6c6f9-1666259831a98ffbbf-0": {
+          "type": "header",
+          "settings": {
+            "show_vendor": false,
+            "show_badge": true,
+            "show_reviews": true,
+            "show_tax_info": false,
+            "show_sku": false,
+            "show_barcode": false,
+            "stick_product_header_on_mobile": true
+          }
+        },
+        "template--16643840639214__93c16429-6c0b-4f74-a1f9-32bc8ee6c6f9-1666259831a98ffbbf-3": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "5ba6523a-952b-48c4-9fa7-24d453fc05c4": {
+          "type": "product_link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16643840639214__93c16429-6c0b-4f74-a1f9-32bc8ee6c6f9-1666259831a98ffbbf-0",
+        "template--16643840639214__93c16429-6c0b-4f74-a1f9-32bc8ee6c6f9-1666259831a98ffbbf-3",
+        "5ba6523a-952b-48c4-9fa7-24d453fc05c4"
+      ],
+      "settings": {
+        "product": "pinot-noir-wine",
+        "gallery_style": "scroll",
+        "gallery_aspect": false,
+        "gallery_pagination": "dots",
+        "enable_zoom": true,
+        "enable_video_looping": false
+      }
+    }
+  },
+  "order": [
+    "eb50faad-7ea5-4966-8256-aa323987e4c0",
+    "main",
+    "93c16429-6c0b-4f74-a1f9-32bc8ee6c6f9"
+  ]
+}

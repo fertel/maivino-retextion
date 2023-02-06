@@ -619,24 +619,25 @@
     "header_background": "#ffffff",
     "main_background": "#ffffff",
     "headings_font": "montserrat_n5",
-    "headings_hr": false,
+    "headings_hr": true,
     "body_font": "neuzeit_s_n4",
-    "body_size": 16,
+    "body_size": 20,
     "product_animation": "three alt color--light",
     "product_overlay_bg": "#000000",
     "product_overlay_txt": "#ffffff",
     "product_show_secondary": true,
     "thumb_resize": "fill",
     "reviews_badge_desktop": "always",
-    "reviews_badge_mobile": false,
+    "reviews_badge_mobile": true,
     "enable_quick_buy": false,
-    "favicon": "",
+    "favicon": "shopify:\/\/shop_images\/grape_favicon.png",
     "cart_action": "overlay",
     "cart_notes_enable": true,
     "cart_additional_buttons": false,
     "cart_recommendations_heading": "You may also enjoy",
     "show_preloader": true,
     "show_breadcrumb": true,
+    "predictive_search_include_articles": false,
     "social_facebook": "https:\/\/www.facebook.com\/itsmaivino",
     "social_instagram": "https:\/\/www.instagram.com\/its.maivino",
     "social_youtube": "",
@@ -649,8 +650,8 @@
     "social_reddit": "",
     "social_flickr": "",
     "social_email": "hi@maivino.com",
-    "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_header_image": "shopify:\/\/shop_images\/ROSE_GIF.gif",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Maivino_Logo_v2-01.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
@@ -741,16 +742,16 @@
       "newsletter": {
         "type": "newsletter",
         "blocks": {
+          "1fd9ee9d-1c25-4238-96f0-2db73b153061": {
+            "type": "heading",
+            "settings": {
+              "heading": "Subscribe to our newsletter and enjoy $10 off"
+            }
+          },
           "812777bd-93c0-451d-baa9-fa31fcc4573c": {
             "type": "paragraph",
             "settings": {
               "paragraph": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
-            }
-          },
-          "1fd9ee9d-1c25-4238-96f0-2db73b153061": {
-            "type": "heading",
-            "settings": {
-              "heading": "Subscribe to our newsletter"
             }
           },
           "980bf5e6-cbc7-494d-a36f-705ccf8d594c": {
@@ -760,8 +761,8 @@
           }
         },
         "block_order": [
-          "812777bd-93c0-451d-baa9-fa31fcc4573c",
           "1fd9ee9d-1c25-4238-96f0-2db73b153061",
+          "812777bd-93c0-451d-baa9-fa31fcc4573c",
           "980bf5e6-cbc7-494d-a36f-705ccf8d594c"
         ],
         "settings": {

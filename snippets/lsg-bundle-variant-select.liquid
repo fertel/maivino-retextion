@@ -1,0 +1,42 @@
+
+{% liquid
+    if variant.metafields.custom.badge
+        assign productBadge = variant.metafields.custom.badge
+    endif
+%}
+{% if variant.featured_image %}
+    {% assign featuredImage = variant.featured_image.src %}
+{% else %}
+    {% assign featuredImage = variant.product.featured_image.src %}
+{% endif %}
+{% if variant.title == "Default Title" %}
+    {% assign title = variant.product.title %}
+{% else %}
+    {% assign title = variant.product.title | append: ' - ' | append: variant.title %}
+{% endif %}
+
+<div class="lsg-bundle-product-select-wrapper" data-lsg-bundle-variant-select-id="{{ variant.id }}">
+    <div class="lsg-bundle-product-select-img-wrap"><img src="{{ featuredImage | img_url: '200x200' }}" alt=""></div>		
+    {% if productBadge %}
+        <img class="lsg-bundle-product-select-badge" src="{{ productBadge | img_url: '60x60' }}" alt="{{ productBadgeAltText }}">
+    {% endif %}
+    <div class="lsg-bundle-product-select-title">{{ title }}</div>
+    <div class="lsg-bundle-product-select-quantity-wrap no-quantity {% if variant.inventory_policy == 'deny' and variant.inventory_management != nil %}product-maxed{% else %}{% endif %}">
+        <button class="lsg-bundle-product-select-quantity-increment lsg-bundle-product-select-quantity-minus" disabled>
+            <svg aria-labelledby="minusIconTitle" xmlns="http://www.w3.org/2000/svg" width="6" height="2" viewBox="0 0 12 4" fill="none">
+                <title id="minusIconTitle">minus</title>
+                <path d="M12 2L0 2" stroke="black" stroke-width="3"/>
+            </svg>
+        </button>
+        <input autocomplete="false" type="number" value="0" min="0" max="{% if variant.inventory_policy == 'deny' and variant.inventory_management != nil %}{{ variant.inventory_quantity }}{% else %}999{% endif %}" class="lsg-bundle-product-select-quantity-input lsg-hidden" data-price="{{ variant.price }}" data-price-formatted="{{ variant.price | money }}" data-product="{{ variant.id }}" aria-label="quantity">
+        <div class="lsg-bundle-product-select-quantity-input-display">0</div>
+        <button class="lsg-bundle-product-select-quantity-increment lsg-bundle-product-select-quantity-plus" disabled>
+            <svg aria-labelledby="plusIconTitle" xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 10 10" fill="none">
+                <title id="plusIconTitle">plus</title>
+                    <path d="M10 5L-1.04308e-07 5" stroke="black" stroke-width="2.5"/>
+                <path d="M5 0L5 10" stroke="black" stroke-width="2.5"/>
+            </svg>
+            <span class="lsg-bundle-product-select-quantity-increment-add-text">ADD</span>
+        </button>
+    </div>
+</div>

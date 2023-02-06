@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "aba4c5a5-6746-402e-bbc1-af80fabe49bb": {
+      "type": "image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Sauv_Blanc_Wine_cc4aaca9-5ea4-483e-bdd0-aedb921bf5e1.png"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "full",
+        "image_1": "shopify:\/\/shop_images\/image_2022_10_28T17_51_30_386Z.png"
+      }
+    },
+    "5c0e6ac4-229d-4355-b892-11ddc13e1a58": {
+      "type": "featured-product",
+      "blocks": {
+        "template--16641043005678__5c0e6ac4-229d-4355-b892-11ddc13e1a58-1666257583a7cc446d-0": {
+          "type": "header",
+          "settings": {
+            "show_vendor": false,
+            "show_badge": true,
+            "show_reviews": true,
+            "show_tax_info": false,
+            "show_sku": false,
+            "show_barcode": false,
+            "stick_product_header_on_mobile": true
+          }
+        },
+        "template--16641043005678__5c0e6ac4-229d-4355-b892-11ddc13e1a58-1666257583a7cc446d-3": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "1e671c6b-d2fc-4f87-a1ab-84661a777c5e": {
+          "type": "product_link",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--16641043005678__5c0e6ac4-229d-4355-b892-11ddc13e1a58-1666257583a7cc446d-0",
+        "template--16641043005678__5c0e6ac4-229d-4355-b892-11ddc13e1a58-1666257583a7cc446d-3",
+        "1e671c6b-d2fc-4f87-a1ab-84661a777c5e"
+      ],
+      "settings": {
+        "product": "sauv-blanc",
+        "gallery_style": "scroll",
+        "gallery_aspect": false,
+        "gallery_pagination": "dots",
+        "enable_zoom": true,
+        "enable_video_looping": false
+      }
+    }
+  },
+  "order": [
+    "aba4c5a5-6746-402e-bbc1-af80fabe49bb",
+    "main",
+    "5c0e6ac4-229d-4355-b892-11ddc13e1a58"
+  ]
+}

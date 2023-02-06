@@ -1,0 +1,52 @@
+{%- layout none -%}
+{% assign upsells = '' | split: ',' %}
+
+{% comment %} Assign upsells based on product and variant metafields {% endcomment %}
+{% for item in cart.items %}
+    {% if item.product.has_only_default_variant %}
+        {% assign itemUpsells = item.product.metafields.custom.upsell.value %}
+    {% else %}
+        {% assign itemUpsells = item.variant.metafields.custom.upsell.value %}
+    {% endif %}
+    {% assign addUpsells = '' %}
+    {% for upsellVariant in itemUpsells %}
+        {% if upsellVariant.available %}
+            {% assign addUpsells = addUpsells | append: ',' | append: upsellVariant.id %}
+        {% endif %}
+    {% endfor %}
+    {% assign addUpsells = addUpsells | remove_first: ',' | split: ',' %}
+    {% assign upsells = upsells | concat: addUpsells | uniq %}
+{% endfor %}
+
+{% comment %} Remove in-cart products from the upsell list {% endcomment %}
+{% for item in cart.items %}
+    {% assign notInCart = '' %}
+    {% for upsell in upsells %}
+        {% assign variantId = item.variant.id | append: '' %}
+        {% if upsell != variantId %}
+            {% assign notInCart = notInCart | append: ',' | append: upsell %}
+        {% endif %}
+    {% endfor %}
+    {% assign upsells = notInCart | remove_first: ',' | split: ',' %}
+{% endfor %}
+
+
+{% for upsell in upsells %} 
+    {% for product in collections.all.products %}
+        {% for variant in product.variants %}
+            {% assign newupsell = upsell | times: 1%}
+            {% if variant.id == newupsell %} 
+                <div class="slidecart-upsell">
+                    <div class="slidecart-upsell-image-wrapper">
+                        <img src="{{ product.featured_image | img_url:'x500'}}" class="slidecart-upsell-image"/>
+                    </div>
+                    <div class="slidecart-upsell-info-wrapper">
+                        <p class="slidecart-upsell-title">{{ product.title }} - {{ variant.title }}</p>
+                        <p class="slidecart-upsell-price">{{ variant.price | money_with_currency }}</p>
+                    </div>
+                    <button add-upsell variant-id="{{variant.id}}">+ Add</button>
+                </div>
+            {% endif %}
+        {% endfor %} 
+    {% endfor %} 
+{% endfor %}

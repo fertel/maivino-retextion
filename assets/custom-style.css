@@ -1,0 +1,39 @@
+.pageImageblocks .site-box-content a.button{
+  background: #000;
+    color: #fff;
+}
+.pageImageblocks .button.button--outline svg path{fill:#fff;}
+#bg_image_banner{
+    background-size: 34%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 500px !important;
+    padding-bottom: 24px;
+    justify-content: end;
+}
+#bg_image_banner .site-box-content{
+  background:#fff;
+}
+#bg_image_banner h1.title.h1{
+  font-size: 35px;
+    margin-bottom: 15px;
+    padding-top: 9px;
+}
+@media(max-width:950px){
+  .pageImageblocks .site-box-content a.button {
+    background: #000;
+    color: #fff;
+    line-height: normal;
+    font-size: 14px;
+    padding: 14px 13px;
+}
+}
+
+@media(max-width:480px){
+  .pageImageblocks .site-box-background  img{
+    object-fit: contain;
+  }
+  .pageImageblocks .site-box{
+   margin-bottom:20px;
+  }
+}

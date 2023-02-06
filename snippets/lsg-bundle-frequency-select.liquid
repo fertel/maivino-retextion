@@ -12,35 +12,42 @@
   assign selling_plan_initial_id = current_selling_plan_allocation.selling_plan.id | default: ''
 -%}
 
-<input type="hidden" value="{{ selling_plan_initial_id }}" class="lsg-bundle-interval-frequency-input">
-<div class="lsg-bundle-interval-frequency-select-wrap">
+
+<div class="lsg-bundle-interval-frequency-group-wrap">
     {% for group in filtered_selling_plan_groups %}
-        <select class="lsg-bundle-interval-frequency-select" data-group-id="{{ group.id }}">
-            {% for selling_plan in group.selling_plans %}
-                {% assign optionName = selling_plan.name %}
-                {% for option in selling_plan.options %}
-                    {% if option.name == "Frequency" %}
-                        {% assign optionName = option.value %}
+        <div class="lsg-bundle-interval-select-heading">{{ group.options[0].name }}</div>
+        <div class="lsg-bundle-interval-frequency-select-wrap">
+            <select class="lsg-bundle-interval-frequency-select {% if isDuplicate %}is-duplicate{% endif %}" data-group-id="{{ group.id }}">
+                {% for selling_plan in group.selling_plans %}
+                    {% assign optionName = selling_plan.name %}
+                    {% for option in selling_plan.options %}
+                        {% if option.name == "Frequency" %}
+                            {% assign optionName = option.value %}
+                        {% endif %}
+                    {% endfor %}
+                    {% assign discountText = "" %}
+                    {% assign discountType = "" %}
+                    {% assign discountValue = 0 %}
+                    {% if selling_plan.price_adjustments %}
+                        {% case selling_plan.price_adjustments[0].value_type %}
+                            {% when 'percentage' %}
+                                {% assign discountType = selling_plan.price_adjustments[0].value_type %}
+                                {% assign discountValue = selling_plan.price_adjustments[0].value %}
+                                {% if discountValue > 0 %}
+                                    {% assign discountText = " (" | append: discountValue| append: "% off)" %}
+                                {% endif %}
+                            {% when 'fixed_amount' %}
+                                {% assign discountType = selling_plan.price_adjustments[0].value_type %}
+                                {% assign discountValue = selling_plan.price_adjustments[0].value %}
+                                {% assign discountValueText = discountValue | money %}
+                                {% if discountValue > 0 %}
+                                    {% assign discountText = " (" | append: discountValueText | append: " off)" %}
+                                {% endif %}
+                        {% endcase %}
                     {% endif %}
+                    <option {% if selling_plan.id == selling_plan_initial_id %}selected{% endif %} value="{{selling_plan.id}}" data-discount-type="{{ discountType }}" data-discount-value="{{ discountValue }}" data-price-adjustments="{{ selling_plan.price_adjustments | json | escape }}" data-selling-plan-options="{{ selling_plan.options | json | escape }}">{{ optionName }}{{ discountText }}</option>
                 {% endfor %}
-                {% assign discountText = "" %}
-                {% assign discountType = "" %}
-                {% assign discountValue = 0 %}
-                {% if selling_plan.price_adjustments %}
-                    {% case selling_plan.price_adjustments[0].value_type %}
-                        {% when 'percentage' %}
-                            {% assign discountType = selling_plan.price_adjustments[0].value_type %}
-                            {% assign discountValue = selling_plan.price_adjustments[0].value %}
-                            {% assign discountText = " (" | append: discountValue| append: "% off)" %}
-                        {% when 'fixed_amount' %}
-                            {% assign discountType = selling_plan.price_adjustments[0].value_type %}
-                            {% assign discountValue = selling_plan.price_adjustments[0].value %}
-                            {% assign discountValueText = discountValue | money %}
-                            {% assign discountText = " (" | append: discountValueText | append: " off)" %}
-                    {% endcase %}
-                {% endif %}
-                <option {% if selling_plan.id == selling_plan_initial_id %}selected{% endif %} value="{{selling_plan.id}}" data-discount-type="{{ discountType }}" data-discount-value="{{ discountValue }}" data-price-adjustments="{{ selling_plan.price_adjustments | json | escape }}" data-selling-plan-options="{{ selling_plan.options | json | escape }}">{{ optionName }}{{ discountText }}</option>
-            {% endfor %}
-        </select>
+            </select>
+        </div>
     {% endfor %}
 </div>

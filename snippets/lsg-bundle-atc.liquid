@@ -1,0 +1,29 @@
+
+        <div class="lsg-bundle-atc-wrapper">
+            {% if isDuplicate %}
+                <div class="lsg-bundle-form">
+            {% else %}
+                <form action="/cart/add" method="post" enctype="multiplart/form-data" class="lsg-bundle-form">
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    <input type="hidden" name="selling_plan" value="{{ current_selling_plan_allocation.selling_plan.id | default: '' }}">
+            {% endif %}
+                <div class="lsg-bundle-atc-wrapper">
+                    <button type="submit" class="lsg-bundle-submit-button" data-lsg-bundle-atc>
+                        <span class="lsg-bundle-submit-button-atc-text" data-lsg-bundle-submit-button-atc-text>
+                            <span data-bundle-total></span> |
+                            {{ settings.atc_text }}
+                        </span>
+                        <span class="lsg-bundle-submit-button-add-more-text hidden" data-lsg-bundle-submit-button-add-more-text>
+                            Add
+                            <span class="lsg-bundle-submit-button-add-more-quantity" data-lsg-bundle-submit-button-add-more-quantity></span>
+                            More
+                        </span>
+                    </button>
+                </div>
+            {% if isDuplicate %}
+                </div>
+            {% else %}
+                </form>
+            {% endif %}
+        </div>
+        <div class="lsg-bundle-sub-atc">{{ settings.sub_atc_text }}</div>

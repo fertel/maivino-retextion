@@ -66,6 +66,7 @@
       "blocks": {
         "9f5340e1-bb79-44ea-a761-1b8a82cc3ba0": {
           "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {
             "maxwidth": 1080
           }
@@ -116,12 +117,25 @@
             "image": "shopify:\/\/shop_images\/DSC2662.jpg",
             "video": ""
           }
+        },
+        "7041a328-4dce-4820-bb05-8660bb4733ac": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "tagline": "Introducing",
+            "title": "Our brand new store",
+            "subtitle": "Showcase your best products",
+            "button_label": "",
+            "button_link": "",
+            "video": ""
+          }
         }
       },
       "block_order": [
         "1657905904085c1c8c-2",
         "1657905904085c1c8c-0",
-        "1657905904085c1c8c-1"
+        "1657905904085c1c8c-1",
+        "7041a328-4dce-4820-bb05-8660bb4733ac"
       ],
       "settings": {
         "desktop_layout": "split",
@@ -211,44 +225,6 @@
         "image_height": "half"
       }
     },
-    "165789862985c89b1c": {
-      "type": "faq",
-      "disabled": true,
-      "blocks": {
-        "165789862950431b54-0": {
-          "type": "text",
-          "settings": {
-            "title": "No Pesiticides or Herbicides",
-            "body": "<p>xxxx<\/p>"
-          }
-        },
-        "165789862950431b54-1": {
-          "type": "text",
-          "settings": {
-            "title": "No Mega Purp",
-            "body": "<p>Let your customers know if you offer free delivery for certain types of orders<\/p><p>Link to your <a href=\"#\">offers page<\/a>.<\/p>"
-          }
-        },
-        "165789862950431b54-2": {
-          "type": "text",
-          "settings": {
-            "title": "Returns details",
-            "body": "<p>Show customers how much time they have for testing your products<\/p><p>Link to your <a href=\"#\">returns policy<\/a>.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "165789862950431b54-0",
-        "165789862950431b54-1",
-        "165789862950431b54-2"
-      ],
-      "settings": {
-        "title": "What we don't do",
-        "open_first": false,
-        "custom_background": "rgba(0,0,0,0)",
-        "custom_text": "rgba(0,0,0,0)"
-      }
-    },
     "product-recommendations": {
       "type": "product-recommendations",
       "disabled": true,
@@ -263,7 +239,6 @@
     "16579059049a4f70ce",
     "16580708436c33fbd0",
     "1657898605dcbbcda6",
-    "165789862985c89b1c",
     "product-recommendations"
   ]
 }

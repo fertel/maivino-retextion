@@ -1,0 +1,15 @@
+
+        <div class="bundle-builder__selected-products" data-bundle-builder-selected-products>
+            {% for i in (0..bundle_max_index0) %}
+                <div class="bundle-builder__selected-product" data-bundle-builder-selected-variant-id data-index="{{ i }}">
+                    <div class="bundle-builder__selected-product-img-wrapper">
+                        <div class="bundle-builder__selected-product-placeholder" data-bundle-builder-selected-placeholder-placeholder></div>
+                        <img src="" alt="" class="bundle-builder__selected-product-image" data-bundle-builder-selected-product-image>
+                    </div>
+                    <div class="bundle-builder__selected-product-title-wrap">
+                        <span class="bundle-builder__selected-product-title" data-bundle-builder-selected-product-title></span>
+                    </div>
+                    <button class="bundle-builder__selected-product-remove-button lsg-bundle-product-select-quantity-minus" data-bundle-builder-selected-product-remove-button></button>
+                </div>
+            {% endfor %}
+        </div>

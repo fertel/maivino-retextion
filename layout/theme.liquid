@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
-{% render 'judgeme_core' %}
+
   <head>
 
   <meta charset="utf-8">
@@ -41,7 +41,9 @@
   <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
 
   <link rel="preload" as="script" href="{{ 'custom.js' | asset_url }}">
+  <link rel="preload" as="script" href="{{ 'lsg-cart.js' | asset_url }}">
   <link rel="preload" as="style" href="{{ 'custom.css' | asset_url }}">
+
   {{ 'theme.css' | asset_url | stylesheet_tag }}
   {{ 'custom.css' | asset_url | stylesheet_tag }}
 
@@ -51,6 +53,16 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
     <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer></script>
   {%- endif -%}
+
+    
+  
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+         <link rel="preload" as="script" href="{{ 'buybox.js' | asset_url }}">
+  
+  
 
   <noscript>
     <link rel="stylesheet" href="{{ 'theme-noscript.css' | asset_url }}">
@@ -98,6 +110,55 @@
 
   {%- render 'head-variables' -%}
   {% include 'sca.storepickup' %}
+  <meta name="google-site-verification" content="-O-dp9YVCaVIb5w-uviX71sPbWCiefod1dw7c-_EOHM" />
+
+  <link rel="stylesheet" href="{{ 'custom-style.css' | asset_url }}">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Winery",
+  "name": "Mai Vino",
+  "image": "https://cdn.shopify.com/s/files/1/0055/3618/6486/files/Asset_2_7397f046-8ef0-4936-81cf-b6f6988880b2.png?v=1657995183",
+  "@id": "",
+  "url": "https://maivino.com/",
+  "telephone": "+1 929-260-2791",
+  "priceRange": "$$",
+  "menu": "https://maivino.com/collections/2022-all-wine",
+  "servesCuisine": "US",
+  "acceptsReservations": "false",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10001",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.712776,
+    "longitude": -74.005974
+  } ,
+  "sameAs": [
+"https://facebook.com/its.maivino",
+"https://twitter.com/itsmaivino",
+"https://instagram.com/its.maivino"
+]
+}
+</script>
+  <script type="application/ld+json">{
+    "@context": "https://schema.org/",
+    "@type": "CreativeWorkSeries",
+    "name": "Mai Vino",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "ratingCount": "209"
+    }
+}
+</script>
+
 </head>
 
 <body id="{{ page_title | handle }}" class="no-touchevents
@@ -125,7 +186,6 @@
     {%- section 'footer' -%}
 
   </main>
-
   {%- if settings.cart_action == 'overlay' -%}
     {%- unless template contains 'cart' -%}
     
@@ -264,6 +324,9 @@
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
 
   <script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+  <script src="{{ 'lsg-cart.js' | asset_url }}" defer></script>
+
 
   {%- if settings.product_animation contains 'three' -%}
     {%- if settings.product_overlay_txt != 'rgba(0,0,0,0)' -%}

@@ -1,0 +1,141 @@
+<div class="slidecart-overlay" slidecart-overlay>
+</div>
+<div class="slidecart-wrapper section-{{section.id}}" id="slidecart-wrapper">
+
+<div class="slidecart-header"> 
+<div class="slidecart-title-wrapper">
+    <p class="slidecart-title">{{ section.settings.title }}</p>
+    <span data-close-slidecart class="close-cart-icon">X</span>
+</div>
+
+<div class="slidecart-shipping-bar" slidecart-shipping-bar free-shipping-minimum="{{ section.settings.minimum }}"  free-shipping-text="{{ section.settings.freeshiptext }}">
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'shipingnotice1' %}
+    <p class="shipping-notice" shipping-notice shipping-text="{{ block.settings.shipingnotice1 }}">
+    {{ block.settings.shipingnotice1 }}
+    </p>
+    {% endcase %}
+    {% endfor %}
+
+<div class="slidecart-shipping-bar-wrapper">
+    <div class="slidecart-shipping-bar-percent" shipping-bar-percent></div>
+</div>
+</div>
+</div>  
+<div class="slidecart-inner-wrapper">
+<div class="slidecart-inner" slidecart-inner>
+<div class="slidecart-product-wrapper" slidecart-product-wrapper>
+
+</div>
+<div class="slidecart-upsell-wrapper" slidecart-upsell-wrapper>
+    
+</div>
+
+</div>
+</div> 
+<div class="cart-footer">
+    <div class="slidecart-free-shipping-note-wrapper">
+{% for block in section.blocks %}
+{% case block.type %}
+{% when 'shipingnotice2' %}
+<p class="shipping-notice" shipping-notice shipping-text="{{ block.settings.shipingnotice2 }}">
+{{ block.settings.shipingnotice2 }}
+</p>
+{% endcase %}
+{% endfor %}   
+       
+</div>
+        
+<div class="cart-subtotal-info" cart-subtotal></div>
+<a class="btn-secondary" href="/checkout">Checkout</a>
+{% for block in section.blocks %}
+{% case block.type %}
+{% when 'shipingnotice3' %}
+<p class="shipping-notice" shipping-notice shipping-text="{{ block.settings.shipingnotice3 }}">
+{{ block.settings.shipingnotice3 }}
+</p>
+
+{% when 'html' %}
+{{ block.settings.html }}
+{% endcase %}
+{% endfor %}
+</div>
+</div>
+{% schema %}
+{
+    "name":"Slidecart",
+    "settings":[
+    {
+        "type":"text",
+        "id":"title",
+        "label":"Title",
+        "default":"Your Cart"
+    },
+    {
+        "type":"text",
+        "id":"minimum",
+        "label":"Free shipping minimum",
+        "default":"40"
+    },
+    {
+        "type":"text",
+        "id":"freeshiptext",
+        "label":"Free shipping text",
+        "default":"You get free shipping!"
+    },
+    {
+        "type":"text",
+        "id":"rewardshiptext",
+        "label":"Reward shipping text",
+        "default":"You get free shipping!"
+    }
+    ],
+    "blocks":[
+    {
+        "type":"html",
+        "name":"Additional HTML",
+        "settings":[
+        {
+            "type":"textarea",
+            "id":"html",
+            "label":"Additional HTML"
+        }
+        ]
+    },
+    {
+        "type":"shipingnotice3",
+        "name":"Shipping Notice 3",
+        "settings":[
+        {
+            "type":"textarea",
+            "id":"shipingnotice3",
+            "label":"Shipping Notice"
+        }
+        ]
+    },
+    {
+        "type":"shipingnotice2",
+        "name":"Shipping Notice 2",
+        "settings":[
+        {
+            "type":"textarea",
+            "id":"shipingnotice2",
+            "label":"Shipping Notice"
+        }
+        ]
+    },
+    {
+        "type":"shipingnotice1",
+        "name":"Shipping Notice 1",
+        "settings":[
+        {
+            "type":"textarea",
+            "id":"shipingnotice1",
+            "label":"Shipping Notice"
+        }
+        ]
+    }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+
+            <div class="lsg-bundle-interval-select {% if isDuplicate %}is-duplicate{% endif %}" data-lsg-bundle-interval-select>
+                {% if settings.frequency_heading %}
+                    <div class="lsg-bundle-frequency-heading">{{ settings.frequency_heading }}</div>
+                {% endif %}
+                <div class="lsg-bundle-interval-select-inner">
+                    {% unless isDuplicate %}
+                        <input type="radio" name="bundle_interval_select_{{ bundleIndex }}" id="bundleIntervalSelectOTP_{{ bundleIndex }}" value="otp" class="lsg-hidden">
+                        <input type="radio" name="bundle_interval_select_{{ bundleIndex }}" id="bundleIntervalSelectSub_{{ bundleIndex }}" value="sub" class="lsg-hidden" checked>
+                    {% endunless %}
+                    <div class="lsg-bundle-interval-select-pod-top">
+                        <label for="bundleIntervalSelectOTP_{{ bundleIndex }}" class="lsg-bundle-interval-el lsg-bundle-interval-otp-el">
+                            <div class="lsg-bundle-interval-name">{{ settings.frequency_otp }}</div>
+                            <div class="lsg-bundle-interval-price lsg-bundle-interval-otp-price">$0.00</div>
+                        </label>
+                        <label for="bundleIntervalSelectSub_{{ bundleIndex }}" class="lsg-bundle-interval-el lsg-bundle-interval-sub-el">
+                            {% assign filtered_selling_plan_groups = product.selling_plan_groups | where: "app_id", "5859381" %}
+                            {% assign group = filtered_selling_plan_groups | first %}
+                            <div class="lsg-bundle-interval-name">{{ group.name | default: settings.frequency_sub }}</div>
+                            <div class="lsg-bundle-interval-price lsg-bundle-interval-sub-price">$0.00</div>
+                            {% if isDuplicate %}
+                                <div class="lsg-bundle-sticky-bar-frequency-select">
+                                    {% render 'lsg-bundle-frequency-select', product: product, isDuplicate: isDuplicate %}
+                                </div>
+                            {% endif %}
+                        </label>
+                    </div>
+                    <div class="lsg-bundle-interval-select-pod-bottom">
+                        {% render 'lsg-bundle-frequency-select', product: product, isDuplicate: isDuplicate %}
+                    </div>
+                </div>
+            </div>
