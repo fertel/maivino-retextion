@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
             url: '/cart.js',
             dataType: 'json',
             success: function (cart) {
-                debugger
                 clearCartDrawer();
                 const obscuredCartData = obscureCartData(cart);
 

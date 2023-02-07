@@ -1,5 +1,10 @@
 <!-- announcement bar -->
-
+{% assign item_count = cart.item_count %}
+{% for item in cart.items %}
+  {% if item.properties["bundle_size"] %}
+     {% assign item_count = item_count | minus: item.properties["bundle_size"] | to_i %} 
+  {% endif %}
+{% endfor %}
 {%- if section.settings.bar_enable -%}
 
   {%- if section.settings.bar_home_only == false or template == 'index' and section.settings.bar_home_only -%}
@@ -177,7 +182,7 @@
       <a href="{{ routes.cart_url }}" title="{{ 'general.navigation.open_cart' | t }}">
         <span class="cart-menu" aria-hidden="true">
           {%- render 'theme-symbols', icon: 'cart' -%}
-          <span class="count-holder"><span class="count" data-header-cart-count>{{ cart.item_count }}</span></span>
+          <span class="count-holder"><span class="count" data-header-cart-count>{{ item_count }}</span></span>
         </span>
       </a>
     </span>

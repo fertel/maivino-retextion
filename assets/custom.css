@@ -204,3 +204,15 @@ age-box.popup.active .popup-content .popup-text {
 .cart-menu .count-holder {
   line-height: 0.5;
 }
+
+.rebuy-cart__flyout-items .property-key-is_child,
+.rebuy-cart__flyout-items .rebuy-cart__flyout-item-property.property-key-bundle_id,
+.rebuy-cart__flyout-items .rebuy-cart__flyout-item-property.property-key-bundle_parent,
+.rebuy-cart__flyout-items .rebuy-cart__flyout-item-property.property-key-bundle_size {
+  display: none;
+}
+
+.rebuy-cart__flyout-items .property-key-bundle_parent .rebuy-cart__flyout-item-quantity {
+  visibility: hidden;
+  ;
+}

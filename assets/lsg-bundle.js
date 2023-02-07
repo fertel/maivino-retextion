@@ -281,7 +281,36 @@ function checkoutEnableValidation(trigger) {
         }
     });
 }
-
+function summateCounts(descriptions) {
+    descriptions.sort()
+    output = [[0, descriptions[0]]]
+    descriptions.forEach((description) => {
+        const [count, lastDesc] = output[output.length - 1]
+        if (lastDesc == description) {
+            output[output.length - 1] = [count + 1, lastDesc]
+        }
+        else {
+            output[output.length] = [1, description]
+        }
+    })
+    return output
+}
+function generateBundleDescription() {
+    //hacking this instead of fixing stuff to make it easy for now
+    const elems = document.querySelectorAll(".lsg-bundle-summary-block .bundle-builder__selected-product-title")
+    const output = []
+    elems.forEach((elem) => {
+        output.push(elem.innerText)
+    })
+    return summateCounts(output).map(([count, text]) => {
+        if (count == 1) {
+            return text
+        }
+        else {
+            return count.toString() + " x " + text
+        }
+    }).join(", ")
+}
 function addToCart(trigger) {
     const bundleID = getGuid();
     const bundleBlock = getBundleBlock(trigger);
@@ -297,20 +326,7 @@ function addToCart(trigger) {
         'items': []
     };
     let bundleProductQuantity = 0;
-    {
-        let cartItem = {
-            id: bundleProductID,
-            quantity: 1,
-            properties: {
-                "bundle_id": bundleID,
-                "bundle_parent": true
-            },
-        };
-        if (interval == 'sub') {
-            cartItem["selling_plan"] = bundleSellingPlan;
-        }
-        bundleCart.items.push(cartItem);
-    }
+
     bundleProductListInputs.forEach(function (bundleProductInput) {
         bundleProductQuantity = bundleProductQuantity + parseInt(bundleProductInput.value);
         if (parseInt(bundleProductInput.value) > 0) {
@@ -319,6 +335,7 @@ function addToCart(trigger) {
                 quantity: parseInt(bundleProductInput.value),
                 properties: {
                     "bundle_id": bundleID,
+                    "is_child": true
                 },
             };
             if (interval == 'sub') {
@@ -327,6 +344,23 @@ function addToCart(trigger) {
             bundleCart.items.push(cartItem);
         }
     });
+    {
+
+        let cartItem = {
+            id: bundleProductID,
+            quantity: 1,
+            properties: {
+                "bundle_id": bundleID,
+                "bundle_parent": true,
+                "bundle": generateBundleDescription(),
+                "bundle_size": bundleProductQuantity
+            },
+        };
+        if (interval == 'sub') {
+            cartItem["selling_plan"] = bundleSellingPlan;
+        }
+        bundleCart.items.push(cartItem);
+    }
     if (bundleProductQuantity > bundleMax || bundleProductQuantity < bundleMin) {
         //quantity is not within bundle size
         return false;
@@ -343,7 +377,8 @@ function addToCart(trigger) {
     }).then((response) => {
         if (response.status == 200) {
             // window.location.href = "/cart";
-            lsgSlideCartOpen();
+            // lsgSlideCartOpen();
+
         }
     }).catch((error) => {
         console.error(error);
@@ -526,7 +561,6 @@ function updateBundlePrice(trigger) {
                 let discount = 0;
                 switch (discountType) {
                     case 'percentage':
-                        debugger
                         discount = (price * parseInt(discountValue)) / 100;
                         break;
                     case 'fixed_amount':

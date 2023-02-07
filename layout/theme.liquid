@@ -41,7 +41,7 @@
   <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
 
   <link rel="preload" as="script" href="{{ 'custom.js' | asset_url }}">
-  <link rel="preload" as="script" href="{{ 'lsg-cart.js' | asset_url }}">
+  <link rel="preload" as="script" href="{{ 'bundle-cart.js' | asset_url }}">
   <link rel="preload" as="style" href="{{ 'custom.css' | asset_url }}">
 
   {{ 'theme.css' | asset_url | stylesheet_tag }}
@@ -62,8 +62,6 @@
         crossorigin="anonymous"></script>
          <link rel="preload" as="script" href="{{ 'buybox.js' | asset_url }}">
   
-  
-
   <noscript>
     <link rel="stylesheet" href="{{ 'theme-noscript.css' | asset_url }}">
   </noscript>
@@ -325,7 +323,7 @@
 
   <script src="{{ 'custom.js' | asset_url }}" defer></script>
 
-  <script src="{{ 'lsg-cart.js' | asset_url }}" defer></script>
+  
 
 
   {%- if settings.product_animation contains 'three' -%}
@@ -377,6 +375,6 @@
   {% render 'age-check' %}
  
   {% render 'rebuy-extensions' %}
-  
+  <script src="{{ 'bundle-cart.js' | asset_url }}" defer></script>
 </body>
 </html>
