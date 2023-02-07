@@ -34,11 +34,18 @@
         })
 
     }
+    const deleted = {}
     const deleteCartItems = (cart) => {
         const bundlesObj = getBundles(cart)
+
         Object.entries(bundlesObj).forEach(([_k, bundle]) => {
             if (!bundle.parent) {
-                bundle.items.forEach((item) => window.Rebuy.Cart.removeItem(item))
+                bundle.items.forEach((item) => {
+                    if (!deleted[item.key]) {
+                        window.Rebuy.Cart.removeItem(item)
+                        deleted[item.key] = true
+                    }
+                })
             }
         })
     }
