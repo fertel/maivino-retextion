@@ -53,15 +53,11 @@
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
     <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer></script>
   {%- endif -%}
-
-    
-  
     <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous"></script>
          <link rel="preload" as="script" href="{{ 'buybox.js' | asset_url }}">
-  
   <noscript>
     <link rel="stylesheet" href="{{ 'theme-noscript.css' | asset_url }}">
   </noscript>
@@ -156,7 +152,7 @@
     }
 }
 </script>
-
+{% include 'judgeme_core' %}
 </head>
 
 <body id="{{ page_title | handle }}" class="no-touchevents
@@ -323,8 +319,6 @@
 
   <script src="{{ 'custom.js' | asset_url }}" defer></script>
 
-  
-
 
   {%- if settings.product_animation contains 'three' -%}
     {%- if settings.product_overlay_txt != 'rgba(0,0,0,0)' -%}
@@ -376,5 +370,6 @@
  
   {% render 'rebuy-extensions' %}
   <script src="{{ 'bundle-cart.js' | asset_url }}" defer></script>
+  
 </body>
 </html>

@@ -2526,10 +2526,10 @@ body.sidebar-move .site-header {
 .site-menu-handle svg {
   transition: transform 150ms linear;
 }
-body.sidebar-move .site-menu-handle {
+/* body.sidebar-move .site-menu-handle {
   opacity: 0.08;
   pointer-events: none;
-}
+} */
 
 .no-touchevents #site-filter-handle rect {
   transition: transform 150ms linear;

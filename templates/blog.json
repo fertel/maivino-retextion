@@ -8,13 +8,17 @@
           "settings": {
           }
         },
-        "summary": {
-          "type": "summary",
-          "settings": {
-          }
-        },
         "info": {
           "type": "info",
+          "disabled": true,
+          "settings": {
+            "show_date": true,
+            "show_author": false
+          }
+        },
+        "summary": {
+          "type": "summary",
+          "disabled": true,
           "settings": {
           }
         }
@@ -25,6 +29,10 @@
         "summary"
       ],
       "settings": {
+        "enable_tags": false,
+        "post_limit": 8,
+        "custom_text": "rgba(0,0,0,0)",
+        "custom_overlay": "rgba(0,0,0,0)"
       }
     }
   },

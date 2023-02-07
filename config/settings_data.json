@@ -782,19 +782,18 @@
               "size": "text-size--large"
             }
           },
-          "12b567a0-c1d2-4945-9fc2-e898a4d08123": {
-            "type": "menu",
-            "disabled": true,
-            "settings": {
-              "title": "Quick links",
-              "menu": "footer"
-            }
-          },
           "24d2f668-58b6-4f6e-b219-8a45137c7000": {
             "type": "menu",
             "settings": {
               "title": "Quick links",
               "menu": "footer-1"
+            }
+          },
+          "12b567a0-c1d2-4945-9fc2-e898a4d08123": {
+            "type": "menu",
+            "settings": {
+              "title": "Education",
+              "menu": "footer"
             }
           },
           "f2405299-2ef4-4b81-87eb-e4ea73a3a88a": {
@@ -806,8 +805,8 @@
         },
         "block_order": [
           "98d0a8b1-4275-47db-9659-9ff75b0b4f2a",
-          "12b567a0-c1d2-4945-9fc2-e898a4d08123",
           "24d2f668-58b6-4f6e-b219-8a45137c7000",
+          "12b567a0-c1d2-4945-9fc2-e898a4d08123",
           "f2405299-2ef4-4b81-87eb-e4ea73a3a88a"
         ],
         "settings": {
