@@ -1,0 +1,89 @@
+{
+  "sections": {
+    "151f7aa6-44c9-4060-bbf0-c0240dde8785": {
+      "type": "image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Vegan_Wine_e18fcc86-7abf-4ca1-873f-652b6ccad3fc.jpg"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "full",
+        "image_1": "shopify:\/\/shop_images\/image_2022_10_28T17_52_06_214Z.png"
+      }
+    },
+    "10e0f8d9-ed17-42b9-8d83-c2dc9671081b": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--16643818717422__10e0f8d9-ed17-42b9-8d83-c2dc9671081b-16663285850bb19be9-0": {
+          "type": "image",
+          "settings": {
+            "subtitle": "",
+            "title": "",
+            "button_label": "Shop Now",
+            "url": "https:\/\/maivino.com\/pages\/sauvignon-blanc-wine",
+            "image": "shopify:\/\/shop_images\/image_2022_10_28T17_51_30_386Z.png",
+            "image_alignment": "50% 50%",
+            "custom_text": "#000000",
+            "custom_overlay": "rgba(0,0,0,0)"
+          }
+        },
+        "template--16643818717422__10e0f8d9-ed17-42b9-8d83-c2dc9671081b-16663285850bb19be9-1": {
+          "type": "image",
+          "settings": {
+            "subtitle": "",
+            "title": "",
+            "button_label": "Shop Now",
+            "url": "https:\/\/maivino.com\/pages\/orange-wine",
+            "image": "shopify:\/\/shop_images\/image_2022_10_28T17_52_06_214Z.png",
+            "image_alignment": "50% 50%",
+            "custom_text": "#000000",
+            "custom_overlay": "rgba(0,0,0,0)"
+          }
+        },
+        "1b61622d-9c69-4166-84c5-ba768fe58197": {
+          "type": "image",
+          "settings": {
+            "subtitle": "",
+            "title": "",
+            "button_label": "Shop Now",
+            "url": "https:\/\/maivino.com\/pages\/pinot-noir-wine",
+            "image": "shopify:\/\/shop_images\/image_2022_10_28T17_51_48_694Z.png",
+            "image_alignment": "50% 50%",
+            "custom_text": "rgba(0,0,0,0)",
+            "custom_overlay": "rgba(0,0,0,0)"
+          }
+        },
+        "48d1d417-dd12-4e9a-ba61-9ed819c2e4b3": {
+          "type": "image",
+          "settings": {
+            "subtitle": "",
+            "title": "",
+            "button_label": "Shop Now",
+            "url": "https:\/\/maivino.com\/pages\/rose-wine",
+            "image": "shopify:\/\/shop_images\/image_2022_10_28T17_51_00_465Z.png",
+            "image_alignment": "50% 50%",
+            "custom_text": "rgba(0,0,0,0)",
+            "custom_overlay": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "template--16643818717422__10e0f8d9-ed17-42b9-8d83-c2dc9671081b-16663285850bb19be9-0",
+        "template--16643818717422__10e0f8d9-ed17-42b9-8d83-c2dc9671081b-16663285850bb19be9-1",
+        "1b61622d-9c69-4166-84c5-ba768fe58197",
+        "48d1d417-dd12-4e9a-ba61-9ed819c2e4b3"
+      ],
+      "settings": {
+        "image_height": "half",
+        "text_alignment": "horizontal-center vertical-bottom"
+      }
+    }
+  },
+  "order": [
+    "151f7aa6-44c9-4060-bbf0-c0240dde8785",
+    "main",
+    "10e0f8d9-ed17-42b9-8d83-c2dc9671081b"
+  ]
+}

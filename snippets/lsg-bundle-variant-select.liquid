@@ -16,7 +16,9 @@
 {% endif %}
 
 <div class="lsg-bundle-product-select-wrapper" data-lsg-bundle-variant-select-id="{{ variant.id }}">
-    <div class="lsg-bundle-product-select-img-wrap"><img src="{{ featuredImage | img_url: '200x200' }}" alt=""></div>		
+    <div class="lsg-bundle-product-select-img-wrap">
+        {%- render 'lazy-image', image: featuredImage, sizes: '(max-width: 768px) 80vw, (max-width: 1024px) and (orientation: portrait) 80vw, max(50vw, 60vh)' -%}
+</div>		
     {% if productBadge %}
         <img class="lsg-bundle-product-select-badge" src="{{ productBadge | img_url: '60x60' }}" alt="{{ productBadgeAltText }}">
     {% endif %}

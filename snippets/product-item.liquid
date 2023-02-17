@@ -45,39 +45,65 @@
       <span class="title"><span class="underline-animation">{{ product.title }}</span></span>
       <span class="price text-size--smaller"><span>
 {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
-        {%- liquid
+        {% if product.price > 0 %}
+          {%- liquid
 
-          assign price = product.price | money
+            assign price = product.price | money
 
-          if product.price_varies
-            if product.compare_at_price > product.price
-              echo 'product.on_sale_from_html' | t: price: price
+            if product.price_varies
+              if product.compare_at_price > product.price
+                echo 'product.on_sale_from_html' | t: price: price
+              else
+                echo 'product.from_text_html' | t: price: price
+              endif
             else
-              echo 'product.from_text_html' | t: price: price
+              if product.compare_at_price > product.price
+                echo price
+                echo '<del>'
+                  echo product.compare_at_price | money
+                echo '</del>'
+              else 
+                echo price
+              endif
             endif
-          else
-            if product.compare_at_price > product.price
-              echo price
-              echo '<del>'
-                echo product.compare_at_price | money
-              echo '</del>'
-            else 
-              echo price
-            endif
-          endif
 
-          if variant.unit_price_measurement
-            echo '<span class="unit-price text-size--smallest">'
-            echo variant.unit_price | money
-            echo ' / '
-            if variant.unit_price_measurement.reference_value != 1
-              echo variant.unit_price_measurement.reference_value
+            if variant.unit_price_measurement
+              echo '<span class="unit-price text-size--smallest">'
+              echo variant.unit_price | money
+              echo ' / '
+              if variant.unit_price_measurement.reference_value != 1
+                echo variant.unit_price_measurement.reference_value
+              endif
+              echo variant.unit_price_measurement.reference_unit
+              echo '</span>'
             endif
-            echo variant.unit_price_measurement.reference_unit
-            echo '</span>'
-          endif
 
-        -%}
+          -%}
+        {% else %}
+          {% assign discountText = "" %}
+          {% assign bundle_selling_plan_group = product.selling_plan_groups | where: "app_id", "5859381" | first%}
+          
+          {% if bundle_selling_plan_group %}
+            {%- assign bundle_selling_plan = bundle_selling_plan_group.selling_plans | first -%}
+            
+            {% case bundle_selling_plan.price_adjustments[0].value_type %}
+              {% when 'percentage' %}
+                  {% assign discountType = bundle_selling_plan.price_adjustments[0].value_type %}
+                  {% assign discountValue = bundle_selling_plan.price_adjustments[0].value %}
+                  {% if discountValue > 0 %}
+                      {% assign discountText = discountValue | append: "% off" %}
+                  {% endif %}
+              {% when 'fixed_amount' %}
+                  {% assign discountType = bundle_selling_plan.price_adjustments[0].value_type %}
+                  {% assign discountValue = bundle_selling_plan.price_adjustments[0].value %}
+                  {% assign discountValueText = discountValue | money %}
+                  {% if discountValue > 0 %}
+                      {% assign discountText = discountValueText | append: " off" %}
+                  {% endif %}
+              {% endcase %}
+          {% endif %}
+          <span class="unit-price text-size--smallest">{{ discountText }}</span>
+        {% endif %}
 
       </span></span>
 

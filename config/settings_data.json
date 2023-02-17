@@ -126,8 +126,7 @@
             },
             "980bf5e6-cbc7-494d-a36f-705ccf8d594c": {
               "type": "email_form",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -329,8 +328,7 @@
             },
             "980bf5e6-cbc7-494d-a36f-705ccf8d594c": {
               "type": "email_form",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -536,8 +534,7 @@
             },
             "980bf5e6-cbc7-494d-a36f-705ccf8d594c": {
               "type": "email_form",
-              "settings": {
-              }
+              "settings": {}
             }
           },
           "block_order": [
@@ -756,8 +753,7 @@
           },
           "980bf5e6-cbc7-494d-a36f-705ccf8d594c": {
             "type": "email_form",
-            "settings": {
-            }
+            "settings": {}
           }
         },
         "block_order": [
@@ -853,23 +849,42 @@
           "bg_color": "#d2d2d2",
           "txt_color": "#000000"
         }
+      },
+      "featured-collection": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "",
+          "subtitle": "",
+          "collection": "build-a-bundle",
+          "collection_rows": 2,
+          "show_view_all": false
+        }
+      },
+      "lsg-bundle-builder": {
+        "type": "lsg-bundle-builder",
+        "settings": {
+          "setUrl": false,
+          "bundle_select_heading": "",
+          "frequency_heading": "Select your plan",
+          "frequency_otp": "One-time purchase",
+          "frequency_sub": "Subscribe & Save",
+          "atc_text": "Add to Cart",
+          "sub_atc_text": "Free Shipping over $49 | 100% Happiness Guarantee",
+          "otp_interval_prefix": "Your bundle:"
+        }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "855628211100114053": {
         "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6174324309569838175": {
         "type": "shopify:\/\/apps\/smile-rewards-loyalty\/blocks\/smile-shopify-app\/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "12120936241911852800": {
         "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/reviews_tab\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",

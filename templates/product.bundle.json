@@ -1,12 +1,18 @@
 {
   "sections": {
+    "16372293330d0f5bf6": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Single-origin wine crafted with intention",
+        "subtitle": "",
+        "collection": "build-a-bundle",
+        "collection_rows": 4,
+        "show_view_all": true
+      }
+    },
     "1663729574e4516faa": {
       "type": "lsg-bundle-builder",
-      "blocks": {},
-      "block_order": [],
       "settings": {
-        "setUrl": true,
-        "bundle_select_heading": "Select your pack",
         "frequency_heading": "Select your frequency",
         "frequency_otp": "Just This Once",
         "frequency_sub": "Subscribe & Save",
@@ -17,6 +23,7 @@
     }
   },
   "order": [
+    "16372293330d0f5bf6",
     "1663729574e4516faa"
   ]
 }
