@@ -601,27 +601,27 @@ function updateBundlePrice(trigger) {
         });
     }
 
-    if (otpSubtotal > 0) {
-        otpSubtotal = otpSubtotal + productBasePrice;
+
+    otpSubtotal = otpSubtotal + productBasePrice;
+
+
+    const discountType = frequency.dataset.discountType;
+    const discountValue = frequency.dataset.discountValue;
+    let discount = 0;
+    switch (discountType) {
+        case 'percentage':
+            discount = (productBasePrice * parseInt(discountValue)) / 100;
+            break;
+        case 'fixed_amount':
+            discount = parseInt(discountValue);
+            break;
+        case 'price':
+            discount = productBasePrice - parseInt(discountValue);
+            break;
     }
-    if (subSubtotal > 0) {
-        const discountType = frequency.dataset.discountType;
-        const discountValue = frequency.dataset.discountValue;
-        let discount = 0;
-        switch (discountType) {
-            case 'percentage':
-                discount = (productBasePrice * parseInt(discountValue)) / 100;
-                break;
-            case 'fixed_amount':
-                discount = parseInt(discountValue);
-                break;
-            case 'price':
-                discount = productBasePrice - parseInt(discountValue);
-                break;
-        }
-        if (discount < 0) { discount = 0; }
-        subSubtotal = subSubtotal + (productBasePrice - discount);
-    }
+    if (discount < 0) { discount = 0; }
+    subSubtotal = subSubtotal + (productBasePrice - discount);
+
 
     const currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',

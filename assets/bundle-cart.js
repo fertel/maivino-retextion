@@ -23,7 +23,7 @@
         Object.entries(bundles).forEach(([k, bundle]) => {
             if (bundle.parent) {
                 const total = bundle.items.reduce((total, item) => total + (item.quantity * item.price),
-                    0)
+                    0) + bundle.parent.price
                 const className = ".property-value-" + k.replace(/[-]/g, "") + ".property-key-bundle_parent"
 
                 const elem = document.querySelector(className + " .rebuy-money")

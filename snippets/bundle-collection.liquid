@@ -1,0 +1,15 @@
+<div class="bundle-collection">
+    <span class="bundle-collection__title">{{title}}:</span>
+    <div class="bundle-collection__container">
+        {%- for product in collection.products -%}
+            {% assign selected = "" %}
+            {% if product.url == request.path %}
+                {% assign selected = "item_selected" %}
+            {% endif %}
+            {% assign sub_bundle_quantities = product.metafields.rtxn.bundle_quantities | split: '|' %}
+            <div class="bundle-collection__item">
+                <a class="{{selected}}" href="{{product.url}}">{{sub_bundle_quantities[0]}}-Pack</a>
+            </div>
+        {%- endfor -%}
+    </div>
+</div>

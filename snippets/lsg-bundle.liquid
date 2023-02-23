@@ -98,17 +98,23 @@
             {% endif %}
         </div>
     </div>
+
     <div class="lsg-bundle-summary-block">
+        
         <div class="lsg-bundle-buybox-product-info">
             <h1 class="lsg-bundle-buybox-product-name">
-                {% if product.metafields.buybox.alt_title %}
+                {% comment %} {% if product.metafields.buybox.alt_title %}
                     {{ product.metafields.buybox.alt_title }}
                 {% else %}
                     {{ product.title }}
-                {% endif %}
+                {% endif %} {% endcomment %}
+                {{section.settings.bundle_title}}
             </h1>
             <div class="lsg-bundle-buybox-description">{{ product.description }}</div>
         </div>
+        {%- if section.settings.collection -%}
+        {% render 'bundle-collection', collection: section.settings.collection, title: section.settings.collection_title %}
+        {%- endif -%}   
         {% if bundleIndex > 0 %}
             {% if section.settings.bundle_select_heading %}
                 <div class="lsg-bundle-size-select-heading">{{ section.settings.bundle_select_heading }}</div>

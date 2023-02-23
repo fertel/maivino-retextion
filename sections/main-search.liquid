@@ -132,43 +132,45 @@
                 <div id="main-collection-product-grid" data-id="{{ section.id }}">
                   {%- if products_results.size > 0 -%}
                     {%- for product in products_results -%}
-                      <a class="search-item" href="{{ product.url }}" title="{{ product.title }}" tabindex="-1"">
-                        <div class="thumbnail" >
-                          {%- if product.featured_media != blank -%}
-                            <img
-                              src="{{ product.featured_media | image_url: width: 110, height: 110, crop: 'center' }}"
-                              srcset="{{ product.featured_media | image_url: width: 110, height: 110, crop: 'center' }} 110w, {{ product.featured_media | image_url: width: 220, height: 220, crop: 'center' }} 220w"
-                              sizes="110px"
-                              alt="{{ product.featured_media.alt }}"
-                              loading="lazy" class="lazy"
-                              width="110" height="110" 
-                            />
-                          {%- else -%}
-                            <span class="onboarding-svg">{{ 'product-1' | placeholder_svg_tag }}</span>
-                          {%- endif -%}
-                        </div>
-                        <div class="content">
-                          <span class="item-title"><span class="underline-animation">{{ product.title }}</span></span>
-                          <span class="caption">
-                            {%- if settings.predictive_search_show_price -%}
-                              {%- assign variant = product.selected_or_first_available_variant -%}
-                              <span class="item-price text-size--smaller">
-                                <span class="visually-hidden">{{ 'general.accessibility_labels.price.regular' | t }}</span>
-                                {{ variant.price | money }}
-                                {%- if variant.compare_at_price > variant.price -%}
-                                  <del>
-                                    <span class="visually-hidden">{{ 'general.accessibility_labels.price.sale' | t }}</span>
-                                    {{ variant.compare_at_price | money }}
-                                  </del>
-                                {%- endif -%}
-                              </span>
+                      {%- unless product.metafields.seo.hidden -%}
+                        <a class="search-item" href="{{ product.url }}" title="{{ product.title }}" tabindex="-1"">
+                          <div class="thumbnail" >
+                            {%- if product.featured_media != blank -%}
+                              <img
+                                src="{{ product.featured_media | image_url: width: 110, height: 110, crop: 'center' }}"
+                                srcset="{{ product.featured_media | image_url: width: 110, height: 110, crop: 'center' }} 110w, {{ product.featured_media | image_url: width: 220, height: 220, crop: 'center' }} 220w"
+                                sizes="110px"
+                                alt="{{ product.featured_media.alt }}"
+                                loading="lazy" class="lazy"
+                                width="110" height="110" 
+                              />
+                            {%- else -%}
+                              <span class="onboarding-svg">{{ 'product-1' | placeholder_svg_tag }}</span>
                             {%- endif -%}
-                            {%- if settings.predictive_search_show_vendor -%}
-                              <span class="text-size--smallest" style="display:block;margin-top:8px">{{ 'product.vendor_html' | t: vendor: product.vendor }}</span>
-                            {%- endif -%}
-                          </span>
-                        </div>
-                      </a>
+                          </div>
+                          <div class="content">
+                            <span class="item-title"><span class="underline-animation">{{ product.title }}</span></span>
+                            <span class="caption">
+                              {%- if settings.predictive_search_show_price -%}
+                                {%- assign variant = product.selected_or_first_available_variant -%}
+                                <span class="item-price text-size--smaller">
+                                  <span class="visually-hidden">{{ 'general.accessibility_labels.price.regular' | t }}</span>
+                                  {{ variant.price | money }}
+                                  {%- if variant.compare_at_price > variant.price -%}
+                                    <del>
+                                      <span class="visually-hidden">{{ 'general.accessibility_labels.price.sale' | t }}</span>
+                                      {{ variant.compare_at_price | money }}
+                                    </del>
+                                  {%- endif -%}
+                                </span>
+                              {%- endif -%}
+                              {%- if settings.predictive_search_show_vendor -%}
+                                <span class="text-size--smallest" style="display:block;margin-top:8px">{{ 'product.vendor_html' | t: vendor: product.vendor }}</span>
+                              {%- endif -%}
+                            </span>
+                          </div>
+                        </a>
+                      {%- endunless -%}
                     {%- endfor -%}
                   {%- endif -%}
                 </div>

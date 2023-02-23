@@ -304,7 +304,7 @@
             {%- when 'buy_buttons' -%}
               
               {%- if product != blank -%}
-                {%- unless product.tags contains "coming_soon" -%}
+                {%- unless product.tags contains "coming_soon" or product.tags contains "build_a_box_product" -%}
                 <product-form 
                   id="add-to-cart-{{ section.id }}" class="product--add-to-cart-form" {% if settings.cart_action == 'overlay' %} data-ajax-cart {% endif %}
                   {{ block.shopify_attributes }}
