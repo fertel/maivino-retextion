@@ -14,6 +14,7 @@
     {% endif %}
 {% endfor %}
 
+
 {% assign first_selling_plan_allocation = product.variants.first.selling_plan_allocations[0] %}
     {% if product.selling_plan_groups[0].name %}
         {% comment %} <input name="id" id="variant_{{ product.id }}" value="{{ current_variant.id }}"> {% endcomment %}
@@ -69,11 +70,21 @@
         var currentProductId = "{{ product.id }}";
 
         var doubleSPG = []
-        for( var i = 0; i < product.selling_plan_groups[0].selling_plans.length; i++) {
-            if(product.selling_plan_groups[0].selling_plans[i].price_adjustments[0].value === 15) {
-                doubleSPG.push(product.selling_plan_groups[0].selling_plans[i])
+        var sellingPlanDouble = ''
+        var sellingPlanOthers = ''
+
+        for( var i = 0; i < product.selling_plan_groups.length; i++) {
+          for( var j = 0; j < product.selling_plan_groups[i].selling_plans.length; j++) {
+            if(product.selling_plan_groups[i].selling_plans[j].price_adjustments[0].value === 15) {
+                doubleSPG.push(product.selling_plan_groups[i].selling_plans[j])    
+                sellingPlanDouble =  product.selling_plan_groups[i].name          
             }
+            if(product.selling_plan_groups[i].selling_plans[j].price_adjustments[0].value === 18) {
+               sellingPlanOthers =  product.selling_plan_groups[i].name
+            }
+          }
         }
+       
 
         var getCurrentVariantAndSetPrice = (variantLabel, variantOption) => {
             for(let i = 0; i < product.variants.length; i++) {
@@ -117,8 +128,7 @@
                 for(let j = 0; j < spgDouble.children.length; j++) {
                     spgDouble.children[j].value =  doubleSPG[j].id
                 }
-                document.querySelector('.sub_title').innerText = product.selling_plan_groups[0].name
-                console.log('Dset')
+                document.querySelector('.sub_title').innerText = sellingPlanDouble    
                 setSellingPlan(product)
                 getCurrentVariantAndSetPrice(window.location.search.split('variant=')[1], 'id')
             })
@@ -143,34 +153,35 @@
                 } else {
                     document.querySelectorAll(`#rtx_buy_box_${product.id}`)[0].style.display = 'block'
                 }
-                if(e.target.value === 'Double' || e.target.value === '"Double / Rosé + Pinot Noir"') {
+                if(e.target.value === 'Double' || e.target.value === '"Double / Rosé + Pinot Noir"' ) {
                     document.querySelectorAll(`#rtx_buy_box_${product.id}`)[0].style.display = 'block'
                     var spgDouble = document.querySelector('#rtx_option_plans_dropdown')
                     for(let j = 0; j < spgDouble.children.length; j++) {
                         spgDouble.children[j].value =  doubleSPG[j].id
                     }
-                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[0].name
+                    document.querySelector('.sub_title').innerText = sellingPlanDouble                 
                     setSellingPlan(product)
-                } else if (e.target.value === 'Triple') {
+                } 
+                else if (e.target.value === 'Triple') {
                     var spgRest = document.querySelector('#rtx_option_plans_dropdown')
                     for(let i = 0; i < spgRest.children.length; i++) {
                         spgRest.children[i].value =  rtxSPG.selling_plans[i].id
                     }
-                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[1].name
+                    document.querySelector('.sub_title').innerText = sellingPlanOthers
                     setSellingPlan(product)
                 } else if (e.target.value === 'Quad') {
                     var spgRest = document.querySelector('#rtx_option_plans_dropdown')
                     for(let i = 0; i < spgRest.children.length; i++) {
                         spgRest.children[i].value =  rtxSPG.selling_plans[i].id
                     }
-                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[1].name
+                    document.querySelector('.sub_title').innerText = sellingPlanOthers
                     setSellingPlan(product)
                 } else if (e.target.value === 'Sixer') {
                     var spgRest = document.querySelector('#rtx_option_plans_dropdown')
                     for(let i = 0; i < spgRest.children.length; i++) {
                         spgRest.children[i].value =  rtxSPG.selling_plans[i].id
                     }
-                    document.querySelector('.sub_title').innerText = product.selling_plan_groups[1].name
+                    document.querySelector('.sub_title').innerText = sellingPlanOthers
                     setSellingPlan(product)
                 }
                 getCurrentVariantAndSetPrice(e.target.value, 'option1')

@@ -66,6 +66,26 @@
     data-sub-bundle-max="{{ sub_bundle_max }}"
     data-product-base-price="{{ product.price }}"
 >
+<div class="mobile-hack">
+        <div class="lsg-bundle-buybox-product-info">
+            <h1 class="lsg-bundle-buybox-product-name">
+                {% comment %} {% if product.metafields.buybox.alt_title %}
+                    {{ product.metafields.buybox.alt_title }}
+                {% else %}
+                    {{ product.title }}
+                {% endif %} {% endcomment %}
+                {% comment %} {{section.settings.bundle_title}} {% endcomment %}
+                {{product.title}}
+            </h1>
+            <div class="price">
+                <span class="product-price product__price--original {% unless title_class %} text-size--large {% endunless %}">{{ product.price | money }}</span>
+            </div>
+            <div class="lsg-bundle-buybox-description">{{ product.description }}</div>
+        </div>
+        {%- if section.settings.collection -%}
+        {% render 'bundle-collection', collection: section.settings.collection, title: section.settings.collection_title %}
+        {%- endif -%}   
+</div>
     <div class="lsg-bundle-buybox-block">
         <div class="lsg-bundle-product-list">
             {% if sub_bundle_products_count > 0 or sub_bundle_variants_count > 0 %}
@@ -100,21 +120,28 @@
     </div>
 
     <div class="lsg-bundle-summary-block">
-        
+
         <div class="lsg-bundle-buybox-product-info">
+        <div class="desktop-hack">
             <h1 class="lsg-bundle-buybox-product-name">
                 {% comment %} {% if product.metafields.buybox.alt_title %}
                     {{ product.metafields.buybox.alt_title }}
                 {% else %}
                     {{ product.title }}
                 {% endif %} {% endcomment %}
-                {{section.settings.bundle_title}}
+                {% comment %} {{section.settings.bundle_title}} {% endcomment %}
+                {{product.title}}
             </h1>
+            <div class="price">
+                <span class="product-price product__price--original {% unless title_class %} text-size--large {% endunless %}">{{ product.price | money }}</span>
+            </div>
             <div class="lsg-bundle-buybox-description">{{ product.description }}</div>
-        </div>
+        
         {%- if section.settings.collection -%}
         {% render 'bundle-collection', collection: section.settings.collection, title: section.settings.collection_title %}
         {%- endif -%}   
+        </div>
+        </div>
         {% if bundleIndex > 0 %}
             {% if section.settings.bundle_select_heading %}
                 <div class="lsg-bundle-size-select-heading">{{ section.settings.bundle_select_heading }}</div>

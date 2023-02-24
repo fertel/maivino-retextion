@@ -531,6 +531,18 @@ function updateQuantityDisplay(input) {
     }
 }
 
+function formatCurrency(bundleMin, price) {
+
+    const currencyFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+    const bundlePrice = currencyFormatter.format(price / 100)
+    const pouchPrice = currencyFormatter.format(price / 100 / bundleMin);
+    return bundlePrice + " (" + pouchPrice + " per pouch)";
+
+}
+
 function updateBundlePrice(trigger) {
     //updates OTP/Sub pricing
     const bundleBlock = getBundleBlock(trigger);
@@ -541,6 +553,7 @@ function updateBundlePrice(trigger) {
     const productList = bundleBlock.querySelector('.lsg-bundle-product-set-list');
     const hasIntervalSelect = bundleBlock.classList.contains('lsg-bundle--has-interval-select');
     const productBasePrice = parseInt(bundleBlock.dataset.productBasePrice);
+
     let interval = ''
     if (bundleBlock.classList.contains('lsg-bundle--only-otp') || bundleBlock.classList.contains('lsg-bundle--otp-selected')) {
         interval = 'otp';
@@ -549,6 +562,7 @@ function updateBundlePrice(trigger) {
     }
     let otpSubtotal = 0;
     let subSubtotal = 0;
+    const bundleMin = (interval == 'otp' ? bundleBlock.dataset.otpBundleMin : bundleBlock.dataset.subBundleMin);
 
     if (productList && interval == 'otp') {
         productList.querySelectorAll('.lsg-bundle-product-select-quantity-input').forEach(function (otpProductInput) {
@@ -628,16 +642,16 @@ function updateBundlePrice(trigger) {
         currency: 'USD'
     });
     otpPriceEls.forEach(function (el) {
-        el.innerHTML = currencyFormatter.format(otpSubtotal / 100);
+        el.innerHTML = formatCurrency(bundleMin, otpSubtotal);
     });
     subPriceEls.forEach(function (el) {
-        el.innerHTML = currencyFormatter.format(subSubtotal / 100);
+        el.innerHTML = formatCurrency(bundleMin, subSubtotal);
     });
     curPriceEls.forEach(function (el) {
         if (interval == 'otp') {
-            el.innerHTML = currencyFormatter.format(otpSubtotal / 100);
+            el.innerHTML = formatCurrency(bundleMin, otpSubtotal)
         } else {
-            el.innerHTML = currencyFormatter.format(subSubtotal / 100);
+            el.innerHTML = formatCurrency(bundleMin, subSubtotal);
         }
     });
 }
@@ -881,3 +895,4 @@ const subFooter = document.querySelector('.io-sub-footer');
 if (subFooter) {
     bottomObserver.observe(subFooter);
 }
+updateBundlePrice(document.querySelector(".lsg-bundle-submit-button-add-more-text"))

@@ -34,14 +34,14 @@
                                 {% assign discountType = selling_plan.price_adjustments[0].value_type %}
                                 {% assign discountValue = selling_plan.price_adjustments[0].value %}
                                 {% if discountValue > 0 %}
-                                    {% assign discountText = " (" | append: discountValue| append: "% off)" %}
+                                    {% assign discountText = " (extra " | append: discountValue| append: "% off)" %}
                                 {% endif %}
                             {% when 'fixed_amount' %}
                                 {% assign discountType = selling_plan.price_adjustments[0].value_type %}
                                 {% assign discountValue = selling_plan.price_adjustments[0].value %}
                                 {% assign discountValueText = discountValue | money %}
                                 {% if discountValue > 0 %}
-                                    {% assign discountText = " (" | append: discountValueText | append: " off)" %}
+                                    {% assign discountText = " (extra " | append: discountValueText | append: " off)" %}
                                 {% endif %}
                         {% endcase %}
                     {% endif %}

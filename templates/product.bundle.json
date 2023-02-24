@@ -1,15 +1,5 @@
 {
   "sections": {
-    "16372293330d0f5bf6": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Single-origin wine crafted with intention",
-        "subtitle": "",
-        "collection": "build-a-bundle",
-        "collection_rows": 4,
-        "show_view_all": true
-      }
-    },
     "1663729574e4516faa": {
       "type": "lsg-bundle-builder",
       "settings": {
@@ -23,7 +13,6 @@
     }
   },
   "order": [
-    "16372293330d0f5bf6",
     "1663729574e4516faa"
   ]
 }

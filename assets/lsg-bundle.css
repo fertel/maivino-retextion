@@ -493,7 +493,7 @@ button:not([disabled]) {
 }
 
 .lsg-bundle-block:not(.bundle-checkout-enabled) .lsg-bundle-interval-select {
-    display: none;
+    pointer-events: none;
 }
 
 /* Sticky Bar */
@@ -557,6 +557,10 @@ button:not([disabled]) {
 }
 
 @media (max-width: 767px) {
+    .desktop-hack {
+        display: none;
+    }
+
     .lsg-bundle-block {
         flex-direction: column;
         padding: 20px 0 30px;
@@ -582,7 +586,8 @@ button:not([disabled]) {
 
     .lsg-bundle-buybox-product-name {
         font-size: 30px;
-        line-height: 1.33;
+        font-weight: normal;
+        /* line-height: 1.33; */
         margin-bottom: 10px;
     }
 
@@ -646,9 +651,13 @@ button:not([disabled]) {
 }
 
 @media (min-width: 768px) {
+    .mobile-hack {
+        display: none;
+    }
+
     .lsg-bundle-wrapper h1 {
         font-size: 30px;
-        font-weight: bold;
+        /* font-weight: bold; */
         line-height: 1.1;
     }
 
